@@ -1,0 +1,103 @@
+0000.000 (0) Opened log file at time: Tue, 08 Oct 2024 01:23:59 +0000 on http://ilm.local
+0000.003 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.6 WP: 6.6.2 PHP: 8.1.29 (cgi-fcgi, Windows NT BOSS_D 10.0 build 22631 (Windows 11) AMD64) MySQL: 8.0.16 (max packet size=16777216) WPLANG: en_US Server: nginx/1.16.0 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 4.6M | 6M) multisite: N openssl: OpenSSL 1.1.1w  11 Sep 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.004 (0) Free space on disk containing Updraft's temporary directory: 440609.9 MB
+0000.008 (0) Tasks: Backup files: 0 (schedule: unset) Backup DB: 1 (schedule: unset)
+0000.011 (0) Semaphore (d, wp_options) being initialised
+0000.017 (0) Requesting semaphore lock (d) (apparently not via scheduler)
+0000.021 (0) Set semaphore last lock (d) time to 2024-10-08 01:23:59
+0000.023 (0) Semaphore lock (d) complete
+0000.029 (0) Backup run: resumption=0, nonce=02e2ecf341ba, file_nonce=02e2ecf341ba begun at=1728350639 (0s ago), job type=backup
+0000.032 (0) Scheduling a resumption (1) after 300 seconds (1728350939) in case this run gets aborted
+0000.056 (0) This backup run is not intended for files - skipping
+0000.058 (0) Beginning creation of database dump (WordPress DB)
+0000.060 (0) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+0000.081 (0) Table wp_options: Total expected rows (via COUNT): 245
+0000.083 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.132 (0) Table wp_options: Rows added in this batch (next record: 772): 240 (uncompressed bytes in this segment=1144633) in 0.05 seconds
+0000.146 (0) Table wp_options: finishing file(s) (2, 258.9 KB)
+0000.154 (0) Table wp_users: Total expected rows (via COUNT): 1
+0000.155 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.159 (0) Table wp_users: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=1403) in 0.01 seconds
+0000.169 (0) Table wp_users: finishing file(s) (2, 0.6 KB)
+0000.178 (0) Table wp_usermeta: Total expected rows (via COUNT): 31
+0000.180 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.184 (0) Table wp_usermeta: Rows added in this batch (next record: 31): 31 (uncompressed bytes in this segment=4436) in 0.01 seconds
+0000.197 (0) Table wp_usermeta: finishing file(s) (2, 1.8 KB)
+0000.210 (0) Table wp_commentmeta: Total expected rows (via COUNT): 0
+0000.215 (0) Table wp_commentmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=685) in 0.01 seconds
+0000.228 (0) Table wp_commentmeta: finishing file(s) (2, 0.4 KB)
+0000.237 (0) Table wp_comments: Total expected rows (via COUNT): 1
+0000.239 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.244 (0) Table wp_comments: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=2152) in 0.01 seconds
+0000.254 (0) Table wp_comments: finishing file(s) (2, 0.8 KB)
+0000.265 (0) Table wp_links: Total expected rows (via COUNT): 0
+0000.270 (0) Table wp_links: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1310) in 0.01 seconds
+0000.279 (0) Table wp_links: finishing file(s) (2, 0.5 KB)
+0000.292 (0) Table wp_postmeta: Total expected rows (approximate): 2160
+0000.312 (0) Table wp_postmeta: Rows added in this batch (next record: 50855): 2179 (uncompressed bytes in this segment=180530) in 0.03 seconds
+0000.324 (0) Table wp_postmeta: finishing file(s) (2, 27.9 KB)
+0000.334 (0) Table wp_posts: Total expected rows (via COUNT): 265
+0000.336 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.349 (0) Table wp_posts: Rows added in this batch (next record: 299): 265 (uncompressed bytes in this segment=162777) in 0.02 seconds
+0000.362 (0) Table wp_posts: finishing file(s) (2, 19.8 KB)
+0000.370 (0) Table wp_term_relationships: Total expected rows (approximate): 108
+0000.375 (0) Table wp_term_relationships: Rows added in this batch (next record: 100000): 113 (uncompressed bytes in this segment=2239) in 0.01 seconds
+0000.386 (0) Table wp_term_relationships: finishing file(s) (2, 0.7 KB)
+0000.397 (0) Table wp_term_taxonomy: Total expected rows (via COUNT): 18
+0000.400 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.404 (0) Table wp_term_taxonomy: Rows added in this batch (next record: 18): 18 (uncompressed bytes in this segment=1550) in 0.01 seconds
+0000.416 (0) Table wp_term_taxonomy: finishing file(s) (2, 0.6 KB)
+0000.428 (0) Table wp_termmeta: Total expected rows (via COUNT): 0
+0000.432 (0) Table wp_termmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=658) in 0.01 seconds
+0000.443 (0) Table wp_termmeta: finishing file(s) (2, 0.4 KB)
+0000.451 (0) Table wp_terms: Total expected rows (via COUNT): 18
+0000.453 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.457 (0) Table wp_terms: Rows added in this batch (next record: 18): 18 (uncompressed bytes in this segment=1352) in 0.01 seconds
+0000.466 (0) Table wp_terms: finishing file(s) (2, 0.6 KB)
+0000.468 (0) PHP event: code E_WARNING: filemtime(): stat failed for C:\Users\donra\Local Sites\ilm\app\public/wp-content/updraft/backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db.gz (line 1925, C:\Users\donra\Local Sites\ilm\app\public\wp-content\plugins\updraftplus\backup.php)
+0000.472 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_options.table.tmpr773.gz (1/12/fopen): adding to final database dump
+0000.483 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_options.table.gz (2/12/fopen): adding to final database dump
+0000.485 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_users.table.tmpr2.gz (3/12/fopen): adding to final database dump
+0000.487 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_users.table.gz (4/12/fopen): adding to final database dump
+0000.489 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_usermeta.table.tmpr32.gz (5/12/fopen): adding to final database dump
+0000.491 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_usermeta.table.gz (6/12/fopen): adding to final database dump
+0000.493 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_commentmeta.table.tmpr0.gz (7/12/fopen): adding to final database dump
+0000.495 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_commentmeta.table.gz (8/12/fopen): adding to final database dump
+0000.497 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_comments.table.tmpr2.gz (9/12/fopen): adding to final database dump
+0000.498 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_comments.table.gz (10/12/fopen): adding to final database dump
+0000.500 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_links.table.tmpr0.gz (11/12/fopen): adding to final database dump
+0000.502 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_links.table.gz (12/12/fopen): adding to final database dump
+0000.503 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_postmeta.table.tmpr50856.gz (13/12/fopen): adding to final database dump
+0000.506 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_postmeta.table.gz (14/12/fopen): adding to final database dump
+0000.508 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_posts.table.tmpr300.gz (15/12/fopen): adding to final database dump
+0000.511 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_posts.table.gz (16/12/fopen): adding to final database dump
+0000.512 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_term_relationships.table.tmpr100001.gz (17/12/fopen): adding to final database dump
+0000.514 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_term_relationships.table.gz (18/12/fopen): adding to final database dump
+0000.516 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_term_taxonomy.table.tmpr19.gz (19/12/fopen): adding to final database dump
+0000.518 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_term_taxonomy.table.gz (20/12/fopen): adding to final database dump
+0000.520 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_termmeta.table.tmpr0.gz (21/12/fopen): adding to final database dump
+0000.522 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_termmeta.table.gz (22/12/fopen): adding to final database dump
+0000.524 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_terms.table.tmpr19.gz (23/12/fopen): adding to final database dump
+0000.525 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db-table-wp_terms.table.gz (24/12/fopen): adding to final database dump
+0000.536 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db.gz: finished writing out complete database file (313.2 KB)
+0000.552 (0) Total database tables backed up: 12 (backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db.gz, size: 320868, sha1: 00542db06b251fc069bbf369ebfc65134f062d94, sha256: e229dfb08b5f439732a174da4952fbe7514277929ec0a2e7ecdc551f2d207640)
+0000.565 (0) backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db.gz: db: This file has not yet been successfully uploaded: will queue
+0000.566 (0) Saving backup history. Total backup size: 313.3 KB
+0000.570 (0) Requesting upload of the files that have not yet been successfully uploaded (1)
+0000.575 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0000.576 (0) No remote despatch: user chose no remote backup service
+0000.577 (0) Recording as successfully uploaded: backup_2024-10-08-0123_Intentional_Life_Media_02e2ecf341ba-db.gz
+0000.583 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0000.585 (0) Number of backup sets in history: 1; groups (db): 1
+0000.586 (0) Examining (for databases) backup set with group_id=0, nonce=02e2ecf341ba, datestamp=1728350639 (Oct 08 2024 01:23:59)
+0000.587 (0) This backup set is the backup set just made, so will not be deleted.
+0000.587 (0) Number of backup sets in history: 1; groups (files): 1
+0000.589 (0) Examining (for files) backup set with nonce=02e2ecf341ba, datestamp=1728350639 (Oct 08 2024 01:23:59)
+0000.589 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0000.590 (0) Retain: saving new backup history (sets now: 1) and finishing retain operation
+0000.594 (0) Resume backup (02e2ecf341ba, 0): finish run
+0000.598 (0) Decremented the semaphore (d) by 1
+0000.601 (0) Semaphore (d) unlocked
+0000.603 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0000.608 (0) No email will/can be sent - the user has not configured an email address.
+0000.609 (0) The backup succeeded and is now complete
