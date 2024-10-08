@@ -1,0 +1,98 @@
+section.hero {
+    .hero-image {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom center;
+        }
+        @include before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--forest-gray);
+            mix-blend-mode: screen;
+            z-index: 1;
+        }
+    }
+    .button-group-box {
+        margin-top: 30px;
+    }
+    .hero-content {
+        z-index: 1;
+    }
+    &.hero-content-over-image {
+        min-height: calc(100vh - 80px);
+
+        .hero-content {
+            color: var(--white);
+        }
+    
+        .hero-desc {
+            max-width: 817px;
+        }
+    }
+    &.hero-content-below-image {
+        .hero-inner {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-content {
+            flex-grow: 1;
+        }
+        .hero-icon {
+            position: absolute;
+            right: 0;
+            top: -48px;
+            transform: translateY(-50%);
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .hero-image {
+            position: relative;
+            padding: 12% 0;
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .hero-desc {
+            max-width: 560px;
+        }
+    }
+    &.hero-text-icon-only {
+        text-align: center;
+        h1 {
+            color: var(--torquoise);
+        }
+    }
+}
+
+.admin-bar {
+    section.hero {
+        &.hero-content-over-image {
+            min-height: calc(100vh - 80px - 32px);
+        }
+        &.hero-content-below-image {
+            .hero-inner {
+                min-height: calc(100vh - 80px - 32px);
+            }
+        }
+    }
+}
+
+.blog,
+.post-type-archive {
+    .hero-content {
+        background-color: transparent;
+    }
+}

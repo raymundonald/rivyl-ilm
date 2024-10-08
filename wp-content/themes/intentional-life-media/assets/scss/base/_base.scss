@@ -1,0 +1,387 @@
+#wpadminbar {
+    @include responsive(xs-sm) {
+        display: none;
+    }
+}
+.html.html {
+    @include responsive(xs-sm) {
+        margin-top: 0 !important;
+    }
+}
+#wpadminbar *:not(.ab-icon) {
+    font-family: var(--primary-font) !important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+.button-box {
+    @include button {
+        font-family: var(--secondary-font);
+        text-decoration: none;
+        @include button-style;
+    }
+    &.button-tangerine {
+        @include button {
+            background-color: var(--tangerine);
+            color: var(--forest-gray);
+            border-color: var(--tangerine);
+            @include on-event {
+                border-color: var(--white);
+                background-color: var(--white);
+            }
+        }
+    }
+    &.button-readmore {
+        @include button {
+            padding: 0;
+            border: none;
+            @include after {
+                font-family: swiper-icons;
+                font-size: 11px;
+                margin-left: 10px;
+                text-transform: none !important;
+                letter-spacing: 0;
+                font-variant: initial;
+                line-height: 1;
+                content: "next";
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.wpcf7-submit.wpcf7-submit.wpcf7-submit {
+    background-color: var(--forest-gray);
+    @include button-style;
+    border-color: var(--forest-gray);
+    color: var(--white);
+}
+
+.decor {
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+    @include before {
+        content: "";
+        width: 50px;
+        height: 5px;
+        background-color: var(--decor-color, var(--white));
+        display: block;
+        @include responsive(mobile) {
+            width: 35px;
+            height: 3px;
+        }
+    }
+}
+
+.text-style-bordered-left {
+    padding-left: 20px;
+    border-left: 3px solid var(--torquoise);
+    @include responsive(mobile) {
+        border-width: 5px;
+    }
+}
+.text-style-bordered-left-parent {
+    .desc-box {
+        padding-left: 20px;
+        border-left: 3px solid var(--torquoise);
+    }
+}
+
+section {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    @include headings {
+        color: var(--heading-color);
+    }
+}
+
+.content-margin {
+    > * {
+        @include not-last-child {
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.content-margin-20 {
+    > * {
+        @include not-last-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@include inputs {
+    text-decoration: none;
+    padding: 12px 24px;
+    line-height: 1;
+    display: inline-block;
+    border-radius: 0;
+    border: 1px solid var(--forest-gray);
+    font-size: 1rem;
+    max-width: 100%;
+    width: 100%;
+}
+
+.image-style {
+    position: relative;
+    padding: var(--padding, 35%);
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.image-box {
+    img {
+        @include transition(500ms);
+    }
+}
+
+.swiper-nav-holder.swiper-nav-holder {
+    display: flex;
+    justify-content: flex-end;
+    --swiper-navigation-color: var(--forest-gray);
+    margin-top: 30px;
+    > div {
+        position: static;
+        width: var(--swiper-navigation-size);
+        border-radius: 50%;
+        background-color: var(--tangerine);
+        margin: 0;
+        @include after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        @include not-last-child {
+            margin-right: 8px;
+        }
+    }
+}
+
+.swiper-pagination.swiper-pagination {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    --swiper-pagination-bullet-horizontal-gap: 2.5px;
+    .swiper-pagination-bullet {
+        --swiper-pagination-bullet-height: 2px;
+        --swiper-pagination-bullet-width: 30px;
+        background-color: var(--gray);
+        opacity: 1;
+        &.swiper-pagination-bullet-active {
+            background-color: var(--black);
+        }
+    }
+}
+
+.heading-link {
+    display: inline-block;
+    .heading {
+        margin-bottom: 0;
+    }
+}
+
+.heading-line {
+    position: relative;
+    .heading {
+        display: inline-block;
+        background-color: var(--white, var(--bg-color));
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    @include before {
+        content: "";
+        height: 2px;
+        background-color: var(--torquoise);
+        position: absolute;
+        width: calc(100vw + 40px);
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+    }
+}
+
+.plus-minus {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    position: relative;
+    @include transition(500ms);
+    @include before-after {
+        content: "";
+        background-color: currentColor;
+        position: absolute;
+    }
+    @include before {
+        width: 2px;
+        height: 18px;
+        left: 50%;
+        @include transform(translateX(-50%));
+    }
+    @include after {
+        width: 18px;
+        height: 2px;
+        top: 50%;
+        @include transform(translateY(-50%));
+    }
+}
+.accordion.accordion.accordion {
+    .accordion-button::after {
+        content: none;
+    }
+}
+
+.socials {
+    ul {
+        list-style: none;
+        li {
+            a {
+                @include on-event {
+                    color: var(--tangerine);
+                }
+            }
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+            @include not-last-child {
+                margin-right: 14px;
+            }
+        }
+    }
+}
+
+.bg-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.heading-description.heading-description {
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+        width: 15vw;
+    }
+
+    .heading,
+    .desc-box {
+        position: relative;
+    }
+    &.icon-right {
+        padding-right: calc(15vw + 20px);
+        .icon {
+            text-align: right;
+            left: auto;
+            right: 0;
+        }
+    }
+
+    &.icon-left {
+        padding-right: calc(15vw + 20px);
+        padding-left: calc(15vw + 20px);
+        text-align: center;
+        .icon {
+            text-align: left;
+            left: 0;
+            right: auto;
+        }
+    }
+    &.content-center {
+        padding-left: calc(15vw + 20px);
+    }
+}
+
+.decor-2 {
+    height: 46px;
+    border-width: 3px;
+    border-color: var(--forest-gray);
+    border-left: 3px solid;
+    border-right: 3px solid;
+    &.decor-top {
+        border-top: 3px solid;
+    }
+    &.decor-bottom {
+        border-bottom: 3px solid;
+    }
+}
+.bg-half {
+    position: relative;
+    @include before {
+        position: absolute;
+        left: 0;
+        width: 50%;
+        top: 0;
+        bottom: 0;
+        background-color: var(--background-color);
+        @include responsive(md-lg) {
+            content: "";
+        }
+    }
+    @include responsive(xs-sm) {
+        > .container {
+            > .row {
+                > [class*="col-"] {
+                    @include first-child {
+                        background-color: var(--background-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.the-content {
+    @include headings {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+    h5 {
+        font-size: 24px;
+    }
+    h6 {
+        font-size: 20px;
+    }
+    blockquote {
+        padding-left: 20px;
+        border-left: 2px solid;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+    figcaption {
+        padding-left: 8px;
+        border-left: 2px solid;
+        font-size: 12px;
+        margin-top: 8px;
+        line-height: 1;
+    }
+    figure {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+    
+}

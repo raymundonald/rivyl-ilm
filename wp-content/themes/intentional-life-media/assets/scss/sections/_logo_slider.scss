@@ -1,0 +1,15 @@
+.logo-slider {
+    overflow: hidden;
+    .carousel {
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    .group {
+        animation: scrolling 25s linear infinite;
+        grid-column-gap: 2rem;
+        grid-row-gap: 2rem;
+        flex: none;
+    }
+}

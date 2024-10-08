@@ -1,0 +1,15 @@
+.text-over-bg-image-section {
+    position: relative;
+    --padding-size: 188px;
+    padding-bottom: var(--padding-size);
+    padding-top: var(--padding-size);
+    .container {
+        max-width: 768px;
+    }
+    @include responsive(xs-md) {
+        --padding-size: 150px;
+    }
+    @include responsive(xs-sm) {
+        --padding-size: 100px;
+    }
+}

@@ -1,0 +1,108 @@
+footer {
+    color: var(--white);
+    background-size: 364px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="324" height="630" viewBox="0 0 324 630" fill="none"><g opacity="0.2" clip-path="url(%23clip0_1191_2494)"><path d="M323.958 341.785C316.483 274.9 345 205.054 397.155 162.542C449.31 120.031 523.466 106.18 587.468 126.998C603.687 132.274 619.793 140.031 630.54 153.29C631.809 154.869 633.05 156.618 633.191 158.621C633.389 161.16 631.809 163.445 630.342 165.504C610.09 193.544 589.865 221.584 569.613 249.625L570.544 250.386C534.326 222.91 486.43 212.981 441.384 219.017C420.115 221.867 398.847 228.298 381.641 241.134C358.004 258.764 344.408 286.41 331.658 313.011" fill="%23B5EAE4"/><path d="M324.042 341.785C331.517 274.9 303 205.054 250.845 162.542C198.69 120.031 124.534 106.18 60.5322 126.998C44.3132 132.274 28.207 140.031 17.4601 153.29C16.1908 154.869 14.9497 156.618 14.8087 158.621C14.6112 161.16 16.1908 163.445 17.6576 165.504C37.9102 193.544 58.1347 221.584 78.3873 249.625L77.4565 250.386C113.674 222.91 161.57 212.981 206.616 219.017C227.885 221.867 249.153 228.298 266.359 241.134C289.996 258.764 303.592 286.41 316.342 313.011" fill="%23B5EAE4"/><path d="M324.014 137.21C361.9 137.21 392.614 106.495 392.614 68.6052C392.614 30.7156 361.9 0 324.014 0C286.128 0 255.415 30.7156 255.415 68.6052C255.415 106.495 286.128 137.21 324.014 137.21Z" fill="%23B5EAE4"/><path d="M462.454 305.987C386.211 305.987 324.381 367.794 324.381 444.072H323.591C323.591 367.822 261.789 305.987 185.518 305.987H0C0 484.948 145.069 630.028 324.014 630.028C502.959 630.028 648.028 484.948 648.028 305.987H462.482H462.454ZM326.383 584.893C187.943 584.893 72.7459 483.509 51.1393 351.094H179.735C195.39 352.533 218.915 357.018 243.088 371.405C251.889 376.652 265.259 384.833 277.473 400.009C288.473 413.662 289.996 422.52 303.874 455.807C308.359 466.527 315.016 481.957 323.817 500.434C328.95 489.376 336.707 472.535 345.846 451.717C358.511 422.887 360.655 416.483 368.13 405.284C375.351 394.508 386.521 377.752 407.563 365.424C429.847 352.363 452.046 350.784 464.824 351.066H601.599C579.993 483.481 464.795 584.865 326.355 584.865L326.383 584.893Z" fill="%23B5EAE4"/></g><defs><clipPath id="clip0_1191_2494"><rect width="648" height="630" fill="white"/></clipPath></defs></svg>');
+    @include responsive(xs-sm) {
+        background-size: 250px;
+    }
+    @include responsive(xs) {
+        background-size: 200px;
+    }
+    @include responsive(mobile) {
+        background-size: 180px;
+    }
+    .site-logo {
+        svg {
+            max-width: 215px;
+            width: 100%;
+            height: auto;
+        }
+    }
+    .wpcf7 {
+        .wpcf7-submit.wpcf7-submit.wpcf7-submit {
+            background-color: var(--tangerine);
+            color: var(--forest-gray);
+        }
+        .acceptance {
+            br {
+                display: none;
+            }
+        }
+    }
+    .menu {
+        list-style: none;
+        padding: 0;
+        font-family: var(--secondary-font);
+        li {
+            line-height: 1;
+
+            a {
+                color: var(--white);
+                font-family: var(--secondary-font);
+                font-weight: 500;
+                font-size: 14px;
+                text-decoration: none;
+            }
+            @include not-last-child {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+    .accordion {
+        --bs-accordion-border-radius: 0;
+        --bs-accordion-inner-border-radius: 0;
+        --bs-accordion-border-width: 0;
+        --bs-accordion-btn-bg: transparent;
+        --bs-accordion-bg: tranparent;
+        .accordion-item {
+            .accordion-header {
+                .accordion-button {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: var(--seafoam);
+                    box-shadow: none;
+                    background-color: transparent !important;
+                    outline: none !important;
+                    text-transform: uppercase;
+                    padding: 0 0 24px 0;
+                    line-height: 1;
+                    span {
+                        color: inherit;
+                    }
+                    .chevron {
+                        @include responsive(sm-lg) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .accordion-collapse {
+                .accordion-body {
+                    padding: 0;
+                }
+                @include responsive(sm-lg) {
+                    display: block;
+                }
+            }
+        }
+    }
+    .footer-bottom {
+        padding-top: 33px;
+        border-top: 1px solid var(--white);
+        .menu {
+            display: flex;
+            margin: 0;
+            li {
+                margin-bottom: 0;
+                a {
+                    font-size: 12px;
+                }
+                @include not-last-child {
+                    margin-right: 24px;
+                }
+            }
+        }
+    }
+}

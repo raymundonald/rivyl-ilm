@@ -1,0 +1,10 @@
+section.not-found {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    .bg-image {
+        img {
+            object-position: bottom center;
+        }
+    }
+}

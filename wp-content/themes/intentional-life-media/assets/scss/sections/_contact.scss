@@ -1,0 +1,65 @@
+section.contact {
+    > .container {
+        > .row {
+            > [class*="col-"] {
+                @include responsive(md-lg) {
+                    @include first-child {
+                        padding-right: 60px;
+                    }
+                    @include last-child {
+                        padding-left: 60px;
+                    }
+                }
+                @include responsive(xs-sm) {
+                    padding: 40px;
+                }
+                @include responsive(xs) {
+                    padding: 30px;
+                }
+            }
+        }
+    }
+    .wpcf7-form-control-wrap {
+        display: block;
+        .wpcf7-form-control {
+            &:not(.wpcf7-acceptance) {
+                margin-top: 10px;
+            }
+        }
+    }
+    label {
+        display: block;
+        font-size: 16px;
+    }
+    .wpcf7-submit.wpcf7-submit.wpcf7-submit {
+        background-color: var(--tangerine);
+        border-color: var(--tangerine);
+        color: var(--forest-gray);
+        width: auto;
+        @include on-event {
+            background-color: var(--forest-gray);
+            border-color: var(--forest-gray);
+            color: var(--white);
+        }
+    }
+    .wpcf7-acceptance {
+        input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+        .wpcf7-list-item {
+            margin: 0;
+        }
+    }
+    .form-box {
+        p {
+            line-height: 1;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+body {
+    font-family: var(--primary-font);
+    color: var(--forest-gray);
+    --wp--preset--font-size--medium: 24px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 120%;
+    @include responsive(xs-md) {
+        font-size: 3rem;
+    }
+    @include responsive(xs-sm) {
+        font-size: 2.75rem;
+    }
+    @include responsive(xs) {
+        font-size: 2.5rem;
+    }
+}
+h2,
+.h2 {
+    font-size: 3rem;
+    @include responsive(xs-md) {
+        font-size: 2.75rem;
+    }
+    @include responsive(xs-sm) {
+        font-size: 2.5rem;
+    }
+    @include responsive(xs) {
+        font-size: 2rem;
+    }
+    @include responsive(mobile) {
+        font-size: 1.875rem;
+    }
+}
+h3 {
+    font-size: 2.5rem;
+    line-height: 130%;
+    @include responsive(xs-md) {
+        font-size: 2.25rem;
+    }
+    @include responsive(xs-sm) {
+        font-size: 2rem;
+    }
+    @include responsive(xs) {
+        font-size: 1.8rem;
+    }
+    @include responsive(mobile) {
+        font-size: 1.5625rem;
+    }
+}
+h4 {
+    font-size: 2rem;
+    line-height: 140%;
+}
+
+@include headings {
+    font-weight: 900;
+    text-transform: uppercase;
+    span {
+        color: var(--tangerine);
+    }
+    &.title {
+        font-size: 20px;
+    }
+}
+.subheading {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    * {
+        font-size: inherit;
+    }
+}
+.large-heading {
+    font-size: 85px;
+    @include responsive(xs-md) {
+        font-size: 5.3125rem;
+    }
+    @include responsive(xs-sm) {
+        font-size: 4.0625rem;
+    }
+    @include responsive(xs) {
+        font-size: 3.4375rem;
+    }
+    @include responsive(mobile) {
+        font-size: 2.8125rem;
+    }
+}
+
+p {
+    font-family: var(--secondary-font);
+    line-height: 150%;
+    @include last-child {
+        margin-bottom: 0;
+    }
+    @include responsive(sm-lg) {
+        font-size: 1.125rem;
+    }
+}
+
+.text-tiny {
+    font-size: 12px;
+    * {
+        font-size: inherit;
+    }
+}
+
+.text-large {
+    font-size: 18px;
+}

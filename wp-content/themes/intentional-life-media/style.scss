@@ -1,0 +1,33 @@
+@charset 'UTF-8';
+/*
+Theme Name: Intentional Life Media
+Author: Donald Raymundo
+Description: Bespoke Theme
+Version: 1.0
+License: GNU General Public License
+Text Domain: intentional-life-media
+*/
+/* Vendors
+/*-----------------------------------------------------------------------------------*/
+@import "assets/vendor/bootstrap/scss/bootstrap";
+@import "assets/vendor/swiper/scss/swiper";
+
+@import "assets/scss/utils/mixins", "assets/scss/utils/variables", "assets/scss/base/fonts";
+/*-----------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------*/
+/* Base
+/*-----------------------------------------------------------------------------------*/
+@import "assets/scss/base/typography", "assets/scss/base/helpers", "assets/scss/base/base", "assets/scss/base/animation";
+/*-----------------------------------------------------------------------------------*/
+/* Plugins
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* Sections,  Header & Footer
+/*-----------------------------------------------------------------------------------*/
+@import "assets/scss/sections/header", "assets/scss/sections/footer", "assets/scss/sections/hero",
+    "assets/scss/sections/logo_slider", "assets/scss/sections/_two_column_image_text", "assets/scss/sections/grid",
+    "assets/scss/sections/post", "assets/scss/sections/accordion", "assets/scss/sections/newsletter",
+    "assets/scss/sections/text_image_section", "assets/scss/sections/text_over_bg_image_section",
+    "assets/scss/sections/default", "assets/scss/sections/four04", "assets/scss/sections/teams",
+    "assets/scss/sections/contact";

@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+$base-url: "./assets/" !default;
+$image-url: "./assets/images/" !default;
+$font-url: "./assets/fonts/" !default;
+
+:root {
+	--primary-font: "Outfit", sans-serif;
+	--secondary-font: "Bizmo", sans-serif;
+	--white: #fff;
+	--black: #000;
+	--light-gray: #ededed;
+	--forest-gray: #2c3a3d;
+	--torquoise: #5cb7ac;
+	--seafoam: #b5eae4;
+	--tangerine: #faab53;
+	--blush: #f0c0d4;
+	--gray: #c6c6c6;
+	--left-right-padding: 52px;
+	@include responsive(xs-md) {
+		--left-right-padding: 40px;
+	}
+	@include responsive(xs-sm) {
+		--left-right-padding: 30px;
+	}
+	@include responsive(xs) {
+		--left-right-padding: 20px;
+	}
+	@include responsive(mobile) {
+		--left-right-padding: 0;
+	}
+}

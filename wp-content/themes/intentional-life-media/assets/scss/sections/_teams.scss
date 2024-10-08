@@ -1,0 +1,22 @@
+section.team-section {
+    .position {
+        p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+    .image-box {
+        --padding: 50%;
+    }
+}
+
+.single-team.single-team.single-team {
+    .hero {
+        .heading-description {
+            padding: 0;
+        }
+        .hero-icon{
+            display: none;
+        }
+    }
+}

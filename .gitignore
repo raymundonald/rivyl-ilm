@@ -1,3 +1,4 @@
+
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
 
@@ -24,10 +25,10 @@ wp-config.php
 /wp-content/themes/twenty*/
 
 # Example plugin
-/wp-content/plugins/hello.php
+#/wp-content/plugins/*
 
 # Uploads
-/wp-content/uploads/
+#/wp-content/uploads/
 
 # Log files
 *.log

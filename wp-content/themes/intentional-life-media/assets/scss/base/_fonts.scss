@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+$Bizmo: (
+    "Medium": 500,
+);
+$Outfit: (
+    "Thin": 200,
+    "Light": 300,
+    "Regular": 400,
+    "Medium": 500,
+    "SemiBold": 600,
+    "Bold": 700,
+    "ExtraBold": 800,
+    "Black": 900,
+);
+
+@include font-face("Bizmo", $font-url + "Bizmo/", "Bizmo", normal, $Bizmo);
+@include font-face("Outfit", $font-url + "Outfit/", "Outfit", normal, $Outfit);

@@ -1,0 +1,14 @@
+section.newsletter {
+    --size-x: 80px;
+    --size-y: 80px;
+    .container {
+
+        > .row {
+            --bs-gutter-x: var(--size-x);
+            --bs-gutter-y: var(--size-y);
+        }
+    }
+    @include responsive(xs-sm) {
+        --size-x: 0;
+    }
+}
