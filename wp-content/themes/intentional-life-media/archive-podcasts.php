@@ -23,8 +23,10 @@ $settings = array(
 $id = _get_layout_id('podcasts');
 if ($id) {
     echo do_shortcode(__hero($id));
-    echo _posts_sliders('podcast_category', $args, $settings);
-    echo do_shortcode(__sections($id));
+}
+echo do_shortcode(_posts_sliders('podcast_category', $args, $settings));
+if ($id) {
+    echo do_shortcode(get_the_content(NULL, false, $id));
 }
 
 ?>

@@ -286,6 +286,7 @@
     padding: 12px 24px;
     line-height: 1;
     display: inline-block;
+    @include transition(400ms);
 }
 
 @mixin inputs {

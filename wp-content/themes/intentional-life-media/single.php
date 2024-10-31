@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-echo do_shortcode(__sections(get_the_ID()));
+echo the_content();
 ?>
 
 <?php get_footer(); ?>

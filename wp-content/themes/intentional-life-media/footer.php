@@ -1,12 +1,11 @@
 <?php
 if (is_single()) {
-    $id = _get_layout_id(get_post_type());
+    $id = _get_layout_id(get_post_type(), 'single');
     if ($id) {
-        echo do_shortcode(__sections($id));
+        echo do_shortcode(get_the_content(NULL, false, $id));
     }
 }
 ?>
-
 </main>
 
 <footer class="footer md-padding-top md-padding-bottom bg-forest-gray">

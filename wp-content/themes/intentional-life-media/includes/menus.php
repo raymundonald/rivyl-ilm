@@ -7,6 +7,7 @@ function menu_locations()
 	register_nav_menus(
 		array(
 			'header-menu'	=>	__('Header Menu'),
+			'sideout-menu'	=>	__('Sideout Menu'),
 		)
 	);
 }

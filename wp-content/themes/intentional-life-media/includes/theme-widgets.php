@@ -48,7 +48,9 @@ function action_widgets_init()
     while ($index < 6) {
         $before_title = "<h4 class='accordion-header widget-title' id='footerCol$index'>";
         $before_title .= "<button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapse$index' aria-expanded='false' aria-controls='collapse$index'>";
-        $after_title = "<span class='chevron'></span>";
+        $after_title = "<span class='chevron'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8' fill='none'>
+<path fill-rule='evenodd' clip-rule='evenodd' d='M7.3977 7.66292C7.17802 7.88259 6.82192 7.88259 6.60225 7.66292L0.867387 1.92804C0.64772 1.70837 0.64772 1.35227 0.867387 1.13259L1.13256 0.867393C1.35222 0.647718 1.70838 0.647718 1.92805 0.867393L6.99997 5.93934L12.0719 0.867393C12.2916 0.647718 12.6477 0.647718 12.8674 0.867393L13.1326 1.13259C13.3522 1.35227 13.3522 1.70837 13.1326 1.92804L7.3977 7.66292Z' fill='currentColor'/>
+</svg></span>";
         $after_title .= "</button>";
         $after_title .= "</h4>";
 

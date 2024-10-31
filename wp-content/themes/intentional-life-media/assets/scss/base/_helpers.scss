@@ -211,35 +211,46 @@ $spacings_mobile: (
 
 .bg-tangerine {
     background-color: var(--tangerine);
-    @include on-event {
-        background-color: var(--forest-gray);
-        color: var(--tangerine);
+    &.grid-item {
+        @include on-event {
+            background-color: var(--forest-gray);
+            color: var(--tangerine);
+        }
     }
 }
 .bg-blush {
     background-color: var(--blush);
-    @include on-event {
-        background-color: var(--forest-gray);
-        color: var(--blush);
+    &.grid-item {
+        @include on-event {
+            background-color: var(--forest-gray);
+            color: var(--blush);
+        }
     }
 }
 .bg-seafoam {
     background-color: var(--seafoam);
-    @include on-event {
-        background-color: var(--forest-gray);
-        color: var(--seafoam);
+    &.grid-item {
+        @include on-event {
+            background-color: var(--forest-gray);
+            color: var(--seafoam);
+        }
     }
 }
 .bg-torquoise {
     background-color: var(--torquoise);
-    @include on-event {
-        background-color: var(--forest-gray);
-        color: var(--seafoam);
+    &.grid-item {
+        @include on-event {
+            background-color: var(--forest-gray);
+            color: var(--seafoam);
+        }
     }
 }
 
 .text-torquoise {
     color: var(--torquoise) !important;
+    a {
+        color: inherit !important;
+    }
 }
 
 .lm-container,
@@ -316,6 +327,9 @@ $spacings_mobile: (
     }
     &.small-container {
         max-width: 768px;
+    }
+    &.medium-container {
+        max-width: 1100px;
     }
 }
 

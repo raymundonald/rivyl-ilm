@@ -22,6 +22,8 @@ Text Domain: intentional-life-media
 /*-----------------------------------------------------------------------------------*/
 /* Plugins
 /*-----------------------------------------------------------------------------------*/
+@import "assets/scss/plugins/cf7";
+
 /*-----------------------------------------------------------------------------------*/
 /* Sections,  Header & Footer
 /*-----------------------------------------------------------------------------------*/
@@ -30,4 +32,4 @@ Text Domain: intentional-life-media
     "assets/scss/sections/post", "assets/scss/sections/accordion", "assets/scss/sections/newsletter",
     "assets/scss/sections/text_image_section", "assets/scss/sections/text_over_bg_image_section",
     "assets/scss/sections/default", "assets/scss/sections/four04", "assets/scss/sections/teams",
-    "assets/scss/sections/contact";
+    "assets/scss/sections/contact", "assets/scss/sections/podcasts";

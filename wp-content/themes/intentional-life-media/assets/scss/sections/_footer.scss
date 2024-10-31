@@ -9,6 +9,7 @@ footer {
     }
     @include responsive(xs) {
         background-size: 200px;
+        background-position: right 100px;
     }
     @include responsive(mobile) {
         background-size: 180px;
@@ -44,6 +45,9 @@ footer {
                 font-weight: 500;
                 font-size: 14px;
                 text-decoration: none;
+                @include on-event {
+                    color: var(--torquoise);
+                }
             }
             @include not-last-child {
                 margin-bottom: 1rem;
@@ -68,13 +72,18 @@ footer {
                     text-transform: uppercase;
                     padding: 0 0 24px 0;
                     line-height: 1;
+                    align-items: center;
                     span {
                         color: inherit;
                     }
                     .chevron {
+                        margin-left: 10px;
                         @include responsive(sm-lg) {
                             display: none;
                         }
+                    }
+                    &[aria-expanded="true"] {
+                        color: var(--torquoise);
                     }
                 }
             }
@@ -91,6 +100,14 @@ footer {
     .footer-bottom {
         padding-top: 33px;
         border-top: 1px solid var(--white);
+        .row {
+            @include responsive(xs) {
+                flex-direction: column-reverse;
+                [class*="col-"] {
+                    width: 100%;
+                }
+            }
+        }
         .menu {
             display: flex;
             margin: 0;
@@ -101,7 +118,14 @@ footer {
                 }
                 @include not-last-child {
                     margin-right: 24px;
+                    @include responsive(mobile) {
+                        margin-right: 0;
+                        margin-bottom: 1rem;
+                    }
                 }
+            }
+            @include responsive(mobile) {
+                flex-direction: column;
             }
         }
     }

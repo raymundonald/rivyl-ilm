@@ -1,7 +1,24 @@
 jQuery(document).ready(function () {
     swiper_sliders();
+    modals();
+    header_menu();
 });
+function modals() {
+    jQuery('.listen-modal').click(function (e) {
+        jQuery('#listenModal').modal('show');
+    });
+}
 
+function header_menu() {
+    var offCanvasMenu = document.getElementById('sideOutMenu')
+    offCanvasMenu.addEventListener('show.bs.offcanvas', function () {
+        jQuery('body').addClass('mobile-menu-active');
+    });
+
+    offCanvasMenu.addEventListener('hide.bs.offcanvas', function () {
+        jQuery('body').removeClass('mobile-menu-active');
+    });
+}
 function swiper_sliders() {
 
     if (jQuery('.post-sliders .post-sliders-post').length > 0) {

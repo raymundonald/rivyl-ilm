@@ -9,4 +9,4 @@ require_once('theme-widgets.php');
 require_once('svg.php');
 require_once('menus.php');
 require_once('ajax.php');
-//require_once('checkout.php');
+require_once('bootstrap-navwalker.php');

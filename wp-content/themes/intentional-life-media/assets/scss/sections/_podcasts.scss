@@ -1,0 +1,139 @@
+section.podcast-header {
+    .podcast-player {
+        padding: 40px;
+        .podcast-author {
+            img {
+                width: 207px;
+                height: 207px;
+                object-fit: contain;
+            }
+        }
+        @include responsive(xs) {
+            padding: 20px;
+        }
+    }
+    .podcast-icon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 25%;
+        @include responsive(xs) {
+            left: 30px;
+            top: 30px;
+            width: 20%;
+        }
+    }
+    .podcast-image {
+        @include responsive(xs) {
+            padding: 20px 20px 0 20px;
+            background-color: var(--light-gray);
+        }
+    }
+    .title-share {
+        @include responsive(xs) {
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.audio-player {
+    overflow: hidden;
+    width: 100%;
+    font-family: var(--secondary-font);
+    font-size: 18px;
+
+    .timeline-holder {
+        width: 100%;
+        .timeline {
+            background: var(--gray);
+            width: 100%;
+            position: relative;
+            cursor: pointer;
+            height: 4px;
+            margin-bottom: 1rem;
+            .timeline-progress {
+                background: var(--dark);
+                width: 0%;
+                height: 100%;
+                transition: 0.25s;
+                border-radius: 0;
+            }
+        }
+    }
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        .play-container {
+            margin-right: 2rem;
+        }
+        .toggle-play {
+            svg {
+                width: 53px;
+                height: 53px;
+            }
+            > div {
+                @include transition(500ms);
+            }
+            &.play {
+                .pause-icon {
+                    opacity: 0;
+                    visibility: hidden;
+                    display: none;
+                }
+            }
+            &.pause {
+                .play-icon {
+                    opacity: 0;
+                    visibility: hidden;
+                    display: none;
+                }
+            }
+        }
+        .time {
+            display: flex;
+        }
+        .volume-container {
+            cursor: pointer;
+            display: none;
+            .volume-button {
+                height: 26px;
+                display: flex;
+                align-items: center;
+                .volume {
+                    transform: scale(0.7);
+                }
+            }
+
+            position: relative;
+            z-index: 2;
+            .volume-slider {
+                position: absolute;
+                left: -3px;
+                top: 15px;
+                z-index: -1;
+                width: 0;
+                height: 15px;
+                background: white;
+                box-shadow: 0 0 20px #000a;
+                transition: 0.25s;
+                .volume-percentage {
+                    background: coral;
+                    height: 100%;
+                    width: 75%;
+                }
+            }
+            &:hover {
+                .volume-slider {
+                    left: -123px;
+                    width: 120px;
+                }
+            }
+        }
+        @include responsive(mobile) {
+            flex-direction: column;
+            gap: 25px;
+        }
+    }
+}

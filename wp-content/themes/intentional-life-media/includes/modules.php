@@ -7,17 +7,26 @@ function action_module_content()
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
             return;
         $post_types = array(
-            'page',
+            'layouts',
         );
-        if (in_array(get_post_type(), $post_types)) {
-            $content_html = __hero();
-            if ($sections) {
-                update_post_meta(get_the_ID(), '_sections_html', $sections);
+        $template = get_page_template_slug();
+        
+        if ($template == 'templates/page-modules.php' || in_array(get_post_type(), $post_types)) {
+            $content_html = '<!-- wp:html -->';
+            $content_html .= __sections(get_the_ID());
+            $content_html .= '<!-- /wp:html -->';
+
+            if ($content_html) {
+                $my_post = array(
+                    'ID'           => get_the_ID(),
+                    'post_content' => $content_html
+                );
+                wp_update_post($my_post);
             }
         }
     }
 }
-//add_action('shutdown', 'action_module_content');
+add_action('shutdown', 'action_module_content');
 
 
 function __hero($id)
@@ -28,8 +37,11 @@ function __hero($id)
         $hero_alt_text = get__post_meta_by_id($id, 'hero_alt_text');
         $hero_buttons = get__post_meta_by_id($id, 'hero_buttons');
         $icon = get__post_meta_by_id($id, 'icon');
+        $mobile_bg = get__post_meta_by_id($id, 'mobile_bg');
+
         $hero_desc = get_the_excerpt($id);
-        $hero_image = get_the_post_thumbnail($id, 'full');
+        $hero_image = get_the_post_thumbnail($id, 'full', array('class' => 'desktop-bg'));
+        $hero_image_mobile = wp_get_attachment_image($mobile_bg, 'full');
         $hero_title = $hero_alt_text ? $hero_alt_text : get_the_title($id);
 
 
@@ -37,11 +49,14 @@ function __hero($id)
         $hero_content_classes[] = 'hero-content left-right-padding position-relative';
         $hero_desc_classes[] = 'hero-desc';
         $hero_classes[] = 'hero position-relative d-flex align-items-end';
+        if ($mobile_bg) {
+            $hero_classes[] = 'has-mobile-bg';
+        }
         if ($hero_style == 'hero-content-over-image') {
             $hero_classes[] = 'lg-padding-bottom lg-padding-top';
             $heading_class = "large-heading";
         } else  if ($hero_style == 'hero-content-below-image') {
-            $hero_content_classes[] = 'bg-light-gray xs-padding-top xs-padding-bottom';
+            $hero_content_classes[] = 'bg-light-gray sm-padding-top sm-padding-bottom';
             $hero_desc_classes[] = 'text-style-bordered-left';
         } else {
             $hero_classes[] = 'lg-padding-top';
@@ -57,6 +72,7 @@ function __hero($id)
         if ($hero_image && $hero_style != 'hero-text-icon-only') {
             $html .= "<div class='hero-image bg-image'>";
             $html .= $hero_image;
+            $html .= $hero_image_mobile;
             $html .= "</div>";
         }
 
@@ -152,8 +168,6 @@ function __sections($id)
                 $styles[] = $heading_style;
             }
 
-
-
             //text-styles
             $text_has_decor = isset($section['text_has_decor']) ? $section['text_has_decor'] : false;
             $text_color = isset($section['text_color']) ? $section['text_color'] : false;
@@ -185,7 +199,7 @@ function __sections($id)
                     $section_html = ___logo_slider($section);
                     break;
                 case 'two_columns_image_and_text':
-                    $section_classes[] = 'two-column-image-text';
+                    $section_classes[] = 'two-column-image-text overflow-hidden';
                     $full_height = $section['full_height'];
                     $sticky_content = $section['sticky_content'];
                     if ($full_height) {
@@ -258,9 +272,6 @@ function __sections($id)
             },
         }
     });
-
-
-
 ";
                     }
                     break;
@@ -284,8 +295,10 @@ function __sections($id)
                     $section_html = __contact($section);
                     break;
             }
+
             $section_classes_val = _array_to_string($section_classes);
             $inline_styles_val = _array_to_string($inline_styles, ';');
+
             if ($section_html) {
                 $html .= "<section class='$section_classes_val' $custom_id_val style='$inline_styles_val'>";
                 $html .= $section_html;
@@ -346,6 +359,12 @@ function __custom_scripts($section_id, $styles, $script = '')
         foreach ($styles as $style) {
             $type = $style['_type'];
             switch ($type) {
+                case 'background':
+                    if (isset($style['background_color'])) {
+                        $background_color = $style['background_color'];
+                        $script .= "jQuery('#$section_id').addClass('has-background bg-$background_color');";
+                    }
+                    break;
                 case 'heading':
                     if (isset($style['heading_has_decor'])) {
                         $script .= "jQuery('#$section_id h2.heading').addClass('decor');";
@@ -369,10 +388,6 @@ function __custom_css($section_id, $styles, $css = '')
         foreach ($styles as $style) {
             $type = $style['_type'];
             switch ($type) {
-                case 'background':
-                    $background_color = isset($style['background_color']) ? $style['background_color'] : false;
-                    $css .= "--bg-color: var(--$background_color);";
-                    break;
                 case 'heading':
                     $heading_color = isset($style['heading_color']) ? $style['heading_color'] : false;
                     $decor_color = isset($style['decor_color']) ? $style['decor_color'] : false;
@@ -522,6 +537,7 @@ function _post_query($args, $settings, $html = "<div class='post-grid-holder'>")
         if ($settings['pagination'] == true) {
             $html .= _swiper_pagination();
         }
+        
 
         $html .= "<div class='lm-container'>";
         $html .= "<div class='container'>";
@@ -541,7 +557,6 @@ function _post_query($args, $settings, $html = "<div class='post-grid-holder'>")
 
     $html .= "<div class='$parent_class'>";
     if ($settings['is_slider'] == true) {
-
         $html .= "<div class='swiper-wrapper'>";
     }
     foreach ($posts as $post) {
@@ -617,10 +632,12 @@ function _post_grid($post, $post_type, $html = "<div class='post-grid'>")
     }
 
     if ($post_type == 'post') {
-        $html .= __post_author($post->post_author);
+        $post_author = $post->post_author;
+        $html .= "[post_author author_id='$post_author']";
     }
-
-    $html .= __post_taxonomy_terms($post->ID, array('category', 'post_tag'));
+    $taxonomy = serialize(array('category', 'post_tag'));
+    $post_id = $post->ID;
+    $html .= "[post_taxonomy_terms post_id='$post_id' taxonomy='$taxonomy']";
 
 
     $html .= __description(array(
@@ -759,22 +776,43 @@ function _posts_sliders($taxonomy, $args,  $settings)
 }
 
 
-function _get_layout_id($slug)
+function _get_layout_id($slug, $type = 'archive')
 {
     $post = get_posts(array(
         'post_type' => 'layouts',
         'fields' => 'ids',
         'tax_query'   => array(
+            'relation' => 'AND',
             array(
                 'taxonomy' => 'layouts_category',
                 'field'    => 'slug',
-                'terms'    => $slug
-            )
+                'terms'    => $slug . '-' . $type
+            ),
+            array(
+                'taxonomy' => 'layouts_category',
+                'field'    => 'slug',
+                'terms'    => $type
+            ),
         )
     ));
     if ($post) {
         return $post[0];
     } else {
         return false;
+    }
+}
+
+function _get_terms($post_id, $taxonomy, $html = '')
+{
+    $terms = get_the_terms($post_id, $taxonomy);
+    if ($terms) {
+        foreach ($terms as $term) {
+            $term_link = get_term_link($term->term_id, $taxonomy);
+            $html .= "<a href='$term_link'>";
+            $html .= $term->name;
+            $html .= "</a>";
+        }
+
+        return $html;
     }
 }

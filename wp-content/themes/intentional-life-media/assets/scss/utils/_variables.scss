@@ -17,6 +17,8 @@ $font-url: "./assets/fonts/" !default;
 	--tangerine: #faab53;
 	--blush: #f0c0d4;
 	--gray: #c6c6c6;
+	--dark: #161616;
+	--gray2: #8D8D8D;
 	--left-right-padding: 52px;
 	@include responsive(xs-md) {
 		--left-right-padding: 40px;

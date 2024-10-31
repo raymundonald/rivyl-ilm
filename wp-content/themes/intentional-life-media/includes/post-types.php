@@ -286,7 +286,7 @@ $Team->exclude_from_search = false;
 $Team->publicly_queryable = true;
 $Team->show_in_admin_bar = true;
 $Team->has_archive = true;
-
+$Team->show_in_rest = true;
 
 
 $Team_Category = new newTaxonomy();
@@ -335,10 +335,10 @@ $Radio->has_archive = true;
 $Radio->show_in_rest = true;
 
 
-$Team_Category = new newTaxonomy();
-$Team_Category->taxonomy = 'podcast_category';
-$Team_Category->post_type = 'podcasts';
-$Team_Category->args = array(
+$Radio_Category = new newTaxonomy();
+$Radio_Category->taxonomy = 'podcast_category';
+$Radio_Category->post_type = 'podcasts';
+$Radio_Category->args = array(
     'label'        => 'Podcast Categories',
     'labels' => array(
         'name'                       => _x('Podcast Categories', 'Taxonomy General Name', 'text_domain'),
@@ -365,5 +365,9 @@ $Team_Category->args = array(
     'show_in_rest' => true,
     'hierarchical' => true,
     'query_var'    => false,
-    'has_archive'  => false,
+    'has_archive'  => true,
+    'rewrite'      => array(
+        'with_front' => false,
+        'slug'         => 'podcasts-category',
+    )
 );

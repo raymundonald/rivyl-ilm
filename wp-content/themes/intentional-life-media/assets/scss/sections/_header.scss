@@ -1,7 +1,10 @@
 header {
     padding-top: 17px;
     padding-bottom: 17px;
-
+    z-index: 9999;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
     .header-menu {
         flex-direction: row;
         .menu-item {
@@ -12,6 +15,9 @@ header {
                 font-weight: 900;
                 color: var(--white);
                 text-transform: uppercase;
+                @include on-event {
+                    color: var(--torquoise);
+                }
             }
         }
     }
@@ -81,10 +87,8 @@ header {
     }
 }
 
-
 body.mobile-menu-active {
     header {
-   
         .menu-burger {
             .icon {
                 .menu {
@@ -100,6 +104,60 @@ body.mobile-menu-active {
                         transition:
                             top ease 0.3s,
                             transform ease 0.3s 0.3s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#sideOutMenu {
+    top: 80px;
+    .offcanvas-body {
+        padding: 20px;
+    }
+    @include responsive(mobile) {
+        top: 66.97px;
+    }
+}
+
+.admin-bar {
+    #sideOutMenu {
+        @include responsive(md-lg) {
+            top: calc(80px + 32px);
+        }
+    }
+    header {
+        @include responsive(md-lg) {
+            top: 32px;
+        }
+    }
+}
+
+.navbar-nav {
+    .menu-item {
+        > .nav-link {
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--forest-gray);
+        }
+        .dropdown-menu {
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            > .menu-item {
+                &.current-menu-item {
+                    .dropdown-item {
+                        background-color: transparent;
+                        color: var(--torquoise);
+                    }
+                }
+                .dropdown-item {
+                    font-size: 18px;
+                    background-color: transparent;
+                    color: var(--forest-gray);
+                    @include on-event {
+                        color: var(--torquoise);
                     }
                 }
             }

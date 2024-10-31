@@ -19,12 +19,13 @@ img {
 
 a {
     color: inherit;
+    @include on-event {
+        color: var(--torquoise);
+    }
 }
 
-.button-box {
+.button-box.button-box {
     @include button {
-        font-family: var(--secondary-font);
-        text-decoration: none;
         @include button-style;
     }
     &.button-tangerine {
@@ -38,20 +39,61 @@ a {
             }
         }
     }
-    &.button-readmore {
+    &.button-readmore,
+    &.button-previous {
         @include button {
             padding: 0;
             border: none;
+        }
+    }
+    &.button-readmore {
+        @include button {
             @include after {
                 font-family: swiper-icons;
                 font-size: 11px;
-                margin-left: 10px;
                 text-transform: none !important;
                 letter-spacing: 0;
                 font-variant: initial;
                 line-height: 1;
-                content: "next";
                 font-weight: bold;
+                content: "next";
+                margin-left: 10px;
+            }
+        }
+    }
+    &.button-previous {
+        @include button {
+            @include before {
+                font-family: swiper-icons;
+                font-size: 11px;
+                text-transform: none !important;
+                letter-spacing: 0;
+                font-variant: initial;
+                line-height: 1;
+                font-weight: bold;
+                content: "prev";
+                margin-right: 10px;
+            }
+        }
+    }
+    &.button-bordered {
+        @include button {
+            @include on-event {
+                background-color: var(--white);
+                color: var(--forest-gray);
+                border-color: var(--white);
+            }
+        }
+    }
+}
+
+section:not(.hero):not(.has-background) {
+    .button-box.button-box {
+        &.button-tangerine {
+            @include button {
+                @include on-event {
+                    border-color: var(--tangerine);
+                }
             }
         }
     }
@@ -92,6 +134,9 @@ a {
     .desc-box {
         padding-left: 20px;
         border-left: 3px solid var(--torquoise);
+        @include responsive(mobile) {
+            padding-left: 10px;
+        }
     }
 }
 
@@ -129,6 +174,7 @@ section {
     font-size: 1rem;
     max-width: 100%;
     width: 100%;
+    outline: none;
 }
 
 .image-style {
@@ -183,6 +229,38 @@ section {
         opacity: 1;
         &.swiper-pagination-bullet-active {
             background-color: var(--black);
+            @include responsive(xs) {
+                background-color: var(--forest-gray);
+            }
+        }
+        @include responsive(xs) {
+            --swiper-pagination-bullet-height: 8px;
+            --swiper-pagination-bullet-width: 8px;
+        }
+        @include responsive(xs) {
+            background-color: var(--white);
+        }
+    }
+    @include responsive(xs) {
+        margin-top: 50px;
+        justify-content: center;
+        --swiper-pagination-bullet-horizontal-gap: 4px;
+    }
+}
+section {
+    &:not(.has-background) {
+        .swiper-pagination.swiper-pagination .swiper-pagination-bullet {
+            &:not(.swiper-pagination-bullet-active) {
+                background-color: var(--gray2);
+            }
+        }
+    }
+    &.bg-forest-gray {
+        .swiper-pagination.swiper-pagination .swiper-pagination-bullet {
+            background-color: var(--gray2);
+            &.swiper-pagination-bullet-active {
+                background-color: var(--white);
+            }
         }
     }
 }
@@ -309,6 +387,14 @@ section {
             text-align: left;
             left: 0;
             right: auto;
+            @include responsive(xs) {
+                left: auto;
+                right: 0;
+            }
+        }
+        @include responsive(xs) {
+            padding-left: 0;
+            text-align: left;
         }
     }
     &.content-center {
@@ -383,5 +469,53 @@ section {
         margin-top: 4rem;
         margin-bottom: 4rem;
     }
-    
+}
+
+.social-share-wrap {
+    font-family: var(--secondary-font);
+    font-size: 18px;
+    span {
+        margin-bottom: 1rem;
+    }
+    .social-share-buttons {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    button,
+    a {
+        padding: 6px;
+        background-color: var(--light-gray);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: none;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.dropdown-toggle.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    @include after {
+        border: none;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3977 7.66292C7.17802 7.88259 6.82192 7.88259 6.60225 7.66292L0.867387 1.92804C0.64772 1.70837 0.64772 1.35227 0.867387 1.13259L1.13256 0.867393C1.35222 0.647718 1.70838 0.647718 1.92805 0.867393L6.99997 5.93934L12.0719 0.867393C12.2916 0.647718 12.6477 0.647718 12.8674 0.867393L13.1326 1.13259C13.3522 1.35227 13.3522 1.70837 13.1326 1.92804L7.3977 7.66292Z" fill="%232C3A3D"/></svg>');
+        width: 13px;
+        height: 8px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        @include transition(400ms);
+    }
+    &[aria-expanded="true"] {
+        @include after {
+            @include transform(rotate(-180deg));
+        }
+    }
 }

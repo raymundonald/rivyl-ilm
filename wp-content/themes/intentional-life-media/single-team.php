@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 <?php while (have_posts()) { ?>
     <?php the_post() ?>
-    <section class="team-section bg-light-gray md-padding-top md-padding-bottom bg-light-gray">
+    <section class="team-section bg-light-gray md-padding-top md-padding-bottom bg-light-gray overflow-hidden">
         <div class="container">
             <div class="row gx-65px align-items-center">
                 <div class="col-lg-5">
                     <?= __image(array(
                         'featured_image' => get_the_ID(),
-                        'class' => 'image-style'
+                        'class' => 'image-style mb-4 mb-lg-0'
                     )) ?>
                 </div>
                 <div class="col-lg-7 content-margin">
@@ -26,7 +26,8 @@
 $posts = get_posts(array(
     'post_type' => 'team',
     'numberposts' => 4,
-    'exclude' => get_the_ID()
+    'exclude' => get_the_ID(),
+    'orderby' => 'rand'
 ));
 ?>
 <section class="post-team md-padding-top lg-padding-bottom">
@@ -50,7 +51,7 @@ $posts = get_posts(array(
             }
             ?>
         </div>
-        <div class="button-tangerine col-auto button-box text-center md-margin-top"><a class="" href="#" target="_self">More</a></div>
+        <div class="button-tangerine col-auto button-box text-center md-margin-top"><a href="/team" target="_self">More</a></div>
     </div>
 </section>
 

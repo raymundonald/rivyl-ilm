@@ -3,13 +3,56 @@
         img {
             width: 100%;
         }
+        @include responsive(xs-sm) {
+            margin-bottom: 32px;
+        }
     }
- 
+    .row {
+        &.swap-column-mobile {
+            @include responsive(xs-sm) {
+                flex-direction: column-reverse !important;
+            }
+        }
+    }
+
+    &.lm-container {
+        .container {
+            @include responsive(xs-sm) {
+                margin-right: auto;
+                margin-left: auto;
+                padding-right: calc(var(--bs-gutter-x) * 0.5);
+                padding-left: calc(var(--bs-gutter-x) * 0.5);
+                max-width: 720px;
+            }
+            .row {
+                > div {
+                    @include responsive(xs-sm) {
+                        padding-right: calc(var(--bs-gutter-x) * 0.5);
+                        padding-left: calc(var(--bs-gutter-x) * 0.5);
+                    }
+                    &.col-image {
+                        @include responsive(mobile) {
+                            padding-right: 0;
+                            padding-left: 0;
+                        }
+                    }
+                }
+                @include responsive(xs-sm) {
+                    --bs-gutter-x: 1.5rem;
+                    margin-right: calc(-0.5 * var(--bs-gutter-x));
+                    margin-left: calc(-0.5 * var(--bs-gutter-x));
+                }
+            }
+        }
+    }
+
     &.full-height {
         .container {
             > .row {
                 > [class*="col-"] {
-                    height: 100vh;
+                    @include responsive(md-lg) {
+                        height: 100vh;
+                    }
                 }
             }
         }
@@ -25,14 +68,23 @@
                 height: 100%;
                 object-fit: cover;
             }
+            @include responsive(xs-sm) {
+                padding: 40% 0;
+            }
+            @include responsive(mobile) {
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+            }
         }
     }
     &.sticky-content {
         .content-box {
-            position: sticky;
-            bottom: 50px;
-            background-color: var(--white);
-            padding-top: 20px;
+            @include responsive(md-lg) {
+                position: sticky;
+                bottom: 50px;
+                background-color: var(--white);
+                padding-top: 20px;
+            }
         }
         .col-image {
             padding: 0;

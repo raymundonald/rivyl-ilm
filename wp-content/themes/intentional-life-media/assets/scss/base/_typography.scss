@@ -3,7 +3,9 @@ body {
     color: var(--forest-gray);
     --wp--preset--font-size--medium: 24px;
 }
-
+.bizmo {
+    font-family: var(--secondary-font);
+}
 h1 {
     font-size: 3.5rem;
     line-height: 120%;
@@ -33,7 +35,8 @@ h2,
         font-size: 1.875rem;
     }
 }
-h3 {
+h3,
+.h3 {
     font-size: 2.5rem;
     line-height: 130%;
     @include responsive(xs-md) {
@@ -49,7 +52,8 @@ h3 {
         font-size: 1.5625rem;
     }
 }
-h4 {
+h4,
+.h4 {
     font-size: 2rem;
     line-height: 140%;
 }

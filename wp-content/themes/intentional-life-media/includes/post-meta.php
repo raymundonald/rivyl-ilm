@@ -18,8 +18,8 @@ Container::make('post_meta', 'Hero Settings')
                 'no-hero' => 'No Hero',
             )),
         Field::make('text', 'hero_alt_text', 'Hero Alt Text'),
-        Field::make('image', 'icon', __('Icon')),
-
+        Field::make('image', 'icon', __('Icon'))->set_width(50),
+        Field::make('image', 'mobile_bg', __('Mobile BG'))->set_width(50),
         Field::make('html', 'hero_bg', 'Hero BG')->set_help_text('Hero Background Is Set in Featured Image | Hero Description Is Set in Excerpt'),
     ))
 
@@ -254,7 +254,8 @@ function __two_columns_image_and_text_fields()
             )),
         Field::make('checkbox', 'full_height', __('Full Height'))->set_width(20),
         Field::make('checkbox', 'sticky_content', __('Sticky Content'))->set_width(20),
-        Field::make('checkbox', 'swap_column', __('Swap Column'))->set_width(20)
+        Field::make('checkbox', 'swap_column', __('Swap Column'))->set_width(20),
+        Field::make('checkbox', 'swap_column_mobile', __('Swap Column Mobile'))->set_width(20)
     ));
 };
 
@@ -279,6 +280,7 @@ function __grid_fields__()
                 )
             )
             ->add_fields(array(
+                Field::make('checkbox', 'hide_on_mobile', 'Hide on mobile'),
                 Field::make('text', 'title', 'Title'),
                 Field::make('select', 'background_color')->set_options(__color_options__()),
                 Field::make('complex', 'items', 'Items')
@@ -817,3 +819,16 @@ Container::make('theme_options', __('Theme Settings'))
 Container::make('post_meta', 'Team Settings')
     ->where('post_type', '=', 'team')
     ->add_fields(__social_fields());
+
+
+Container::make('post_meta', 'Podcast Settings')
+    ->where('post_type', '=', 'podcasts')
+    ->add_fields(array(
+        Field::make('file', 'audio', __('Audio'))->set_classes('inline-field')->set_type(array('audio'))
+    ));
+
+Container::make('post_meta', 'Blog Settings')
+    ->where('post_type', '=', 'post')
+    ->add_fields(array(
+        Field::make('text', 'read_time', __('Read Time(in minutes)'))->set_attribute('type', 'number')
+    ));

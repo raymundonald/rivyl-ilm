@@ -10,12 +10,27 @@ section.team-section {
     }
 }
 
+section.post-team {
+    .team-grid {
+        .image-box {
+            overflow: hidden
+        }
+        @include on-event {
+            .image-box {
+                img {
+                    @include transform(scale(1.1));
+                }
+            }
+        }
+    }
+}
+
 .single-team.single-team.single-team {
     .hero {
         .heading-description {
             padding: 0;
         }
-        .hero-icon{
+        .hero-icon {
             display: none;
         }
     }

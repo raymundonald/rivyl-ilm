@@ -18,9 +18,9 @@ $settings = array(
     'is_slider' => false
 );
 
-$id = _get_layout_id('team');
-if ($id) {
-    echo do_shortcode(__hero($id));
+$layout_id = _get_layout_id('team');
+if ($layout_id) {
+    echo do_shortcode(__hero($layout_id));
 }
 ?>
 <section class="post-team md-padding-top lg-padding-bottom">
@@ -44,8 +44,8 @@ if ($id) {
 </section>
 <?php
 
-if ($id) {
-    echo do_shortcode(__sections($id));
+if ($layout_id) {
+    echo do_shortcode(get_the_content(NULL, false, $layout_id));
 }
 
 ?>

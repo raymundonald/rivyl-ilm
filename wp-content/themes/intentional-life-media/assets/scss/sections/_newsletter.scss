@@ -1,8 +1,12 @@
 section.newsletter {
     --size-x: 80px;
     --size-y: 80px;
+    input {
+        @include responsive(mobile) {
+            text-align: center;
+        }
+    }
     .container {
-
         > .row {
             --bs-gutter-x: var(--size-x);
             --bs-gutter-y: var(--size-y);
@@ -10,5 +14,6 @@ section.newsletter {
     }
     @include responsive(xs-sm) {
         --size-x: 0;
+        --size-y: 24px;
     }
 }

@@ -1,5 +1,4 @@
 section.post {
-  
     .desc-box {
         max-width: 780px;
     }
@@ -13,16 +12,6 @@ section.post {
     overflow: hidden;
     position: relative;
 
-    .author-box {
-        img,
-        svg {
-            width: 40px;
-            height: 40px;
-            margin-right: 11px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    }
     .post-content {
         padding: 40px;
         position: absolute;
@@ -38,7 +27,6 @@ section.post {
             color: var(--forest-gray);
         }
     }
-
 }
 .post-post,
 .post-podcasts {
@@ -234,5 +222,36 @@ section.post {
 section.blog-header {
     .image-style {
         --padding: 23%;
+    }
+}
+
+section.blog-content {
+    .share {
+        border-bottom: 1px solid var(--forest-gray);
+    }
+    .the-content {
+        > *:first-child {
+            margin-top: 0;
+        }
+    }
+}
+.author-box {
+    img,
+    svg {
+        width: 40px;
+        height: 40px;
+        margin-right: 11px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.post-grid-holder {
+    @include responsive(xs) {
+        display: flex;
+        flex-direction: column-reverse;
+        .swiper-nav-holder {
+            display: none;
+        }
     }
 }

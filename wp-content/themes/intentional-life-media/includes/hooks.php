@@ -23,8 +23,10 @@ add_action('admin_enqueue_scripts', 'action_admin_enqueue_scripts');
 function action_wp_head()
 {
     $id = false;
+    $custom_css = '';
+    $custom_scripts = '';
 
-    if (is_page()) {
+    if (is_page() || get_post_type() == 'layouts') {
         $id = get_the_ID();
     } else if (is_home()) {
         $id =  get_option('page_for_posts');
@@ -37,51 +39,63 @@ function action_wp_head()
         $_custom_scripts = get_post_meta($id, '_custom_scripts', true);
         $_layouts = get_post_meta($id, '_layouts', true);
         if ($_custom_css) {
-            echo custom_css($_custom_css);
+            $custom_css = custom_css($_custom_css);
         }
         if ($_custom_scripts) {
-            echo custom_scripts($_custom_scripts);
+            $custom_scripts = custom_scripts($_custom_scripts);
         }
         if ($_layouts) {
             foreach ($_layouts as $layout) {
                 $_custom_css = get_post_meta($layout, '_custom_css', true);
                 $_custom_scripts = get_post_meta($layout, '_custom_scripts', true);
                 if ($_custom_css) {
-                    echo custom_css($_custom_css);
+                    $custom_css .= custom_css($_custom_css);
                 }
                 if ($_custom_scripts) {
-                    echo custom_scripts($_custom_scripts);
+                    $custom_scripts .= custom_scripts($_custom_scripts);
                 }
             }
         }
     }
 
     if (is_single()) {
-        $id = _get_layout_id('post');
+        $id = _get_layout_id(get_post_type(), 'single');
         if ($id) {
             $_custom_css = get_post_meta($id, '_custom_css', true);
             $_custom_scripts = get_post_meta($id, '_custom_scripts', true);
             $_layouts = get_post_meta($id, '_layouts', true);
             if ($_custom_css) {
-                echo custom_css($_custom_css);
+                $custom_css .= custom_css($_custom_css);
             }
             if ($_custom_scripts) {
-                echo custom_scripts($_custom_scripts);
+                $custom_scripts .= custom_scripts($_custom_scripts);
             }
-
             if ($_layouts) {
                 foreach ($_layouts as $layout) {
                     $_custom_css = get_post_meta($layout, '_custom_css', true);
                     $_custom_scripts = get_post_meta($layout, '_custom_scripts', true);
                     if ($_custom_css) {
-                        echo custom_css($_custom_css);
+                        $custom_css .= custom_css($_custom_css);
                     }
                     if ($_custom_scripts) {
-                        echo custom_scripts($_custom_scripts);
+                        $custom_scripts .= custom_scripts($_custom_scripts);
                     }
                 }
             }
         }
+    }
+
+    if ($custom_css) {
+        echo '<style class="custom-css">';
+        echo $custom_css;
+        echo '</style>';
+    }
+    if ($custom_scripts) {
+        echo '<script class="custom-script">';
+        echo 'jQuery(document).ready(function () {';
+        echo $custom_scripts;
+        echo '});';
+        echo '</script>';
     }
 }
 
@@ -89,19 +103,22 @@ add_action('wp_head', 'action_wp_head');
 
 function custom_css($_custom_css)
 {
-    $css = '<style class="custom-css">';
-    $css .= $_custom_css;
-    $css .= '</style>';
-    return $css;
+    if ($_custom_css) {
+        return $_custom_css;
+    }
 }
 
 function custom_scripts($_custom_scripts)
 {
-    $script = '<script class="custom-scripts">';
-    $script .= 'jQuery(document).ready(function () {';
-    $script .= $_custom_scripts;
-    $script .= '});';
-    $script .= '</script>';
-
-    return $script;
+    if ($_custom_scripts) {
+        return $_custom_scripts;
+    }
 }
+
+
+function templates()
+{
+    get_template_part('template-parts/header/header-sideout-menu');
+    get_template_part('template-parts/popups/listen');
+}
+add_action('wp_footer', 'templates');

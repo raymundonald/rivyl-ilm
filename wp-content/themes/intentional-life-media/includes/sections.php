@@ -42,6 +42,7 @@ function __two_columns_image_and_text($section)
 {
     $vertical_alignment = $section['vertical_alignment'];
     $swap_column = $section['swap_column'];
+    $swap_column_mobile = $section['swap_column_mobile'];
 
     $column_holder_class[] = 'column-holder d-flex flex-column h-100 lg-padding-top lg-padding-bottom';
 
@@ -57,6 +58,10 @@ function __two_columns_image_and_text($section)
         $row_class = 'row';
     }
 
+    if ($swap_column_mobile) {
+        $row_class .= ' swap-column-mobile';
+    }
+
     $column_holder_class_val = _array_to_string($column_holder_class);
 
     $html = "<div class='container'>";
@@ -67,7 +72,7 @@ function __two_columns_image_and_text($section)
     $html .= __icon_image(array(
         'id' => $section['icon'],
         'size' => 'medium',
-        'class' => 'icon-box'
+        'class' => 'icon-box d-none d-lg-block'
     ));
 
     $html .= "<div class='content-box content-margin'>";
@@ -137,9 +142,7 @@ function __grid($section)
     $grids = $section['grids'];
 
     if ($section['grid_style'] == 'style-1') {
-        $grid_container_class = 'text-style-bordered-left-parent';
-    } else {
-        $grid_container_class = '';
+        $grid_container_class[] = 'text-style-bordered-left-parent';
     }
 
     $html = "<div class='container'>";
@@ -156,6 +159,10 @@ function __grid($section)
             $items = $grid['items'];
             $grid_item_class[] = 'grid-item';
             $background_color = $grid['background_color'];
+            $hide_on_mobile = $grid['hide_on_mobile'];
+            if ($hide_on_mobile) {
+                $grid_item_class[] = "d-none d-lg-block";
+            }
             if ($background_color) {
                 $grid_item_class[] = "bg-$background_color";
             }
@@ -215,20 +222,13 @@ function __post($section, $args = [], $settings = [])
 
     $settings['is_slider'] = isset($section['is_slider']) ? $section['is_slider'] : false;
 
-    if ($post_type == 'post') {
-        $settings['pagination'] = true;
-    } else {
-        $settings['pagination'] = false;
-    }
+    $settings['pagination'] = true;
 
     if ($post_type == 'faqs') {
         $settings['navigation'] = false;
     } else {
         $settings['navigation'] = true;
     }
-
-
-
 
     $html = "<div class='container'>";
     $html .= "<div class='heading-description position-relative content-margin md-margin-bottom icon-$icon_position'>";

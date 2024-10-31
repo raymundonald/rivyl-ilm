@@ -48,6 +48,9 @@ section.grids {
         .grid-item {
             .heading {
                 font-size: 20px;
+                @include responsive(mobile) {
+                    margin-bottom: 100px;
+                }
             }
             .image-box {
                 padding: 40% 0;

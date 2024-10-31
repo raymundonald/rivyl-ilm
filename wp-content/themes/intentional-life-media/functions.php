@@ -74,6 +74,7 @@ function enqueue_scripts()
 	//wp_enqueue_script('intlTelInput', 'https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.js', NULL, ilm_version);
 
 	wp_enqueue_script('swiper', vendor_dir . 'swiper/js/swiper-bundle.min.js');
+	wp_enqueue_script('popper', vendor_dir . 'bootstrap/js/popper.min.js');
 	wp_enqueue_script('bootstrap', vendor_dir . 'bootstrap/js/bootstrap.min.js');
 	wp_register_script('main', assets_dir . 'js/main.js', NULL, ilm_version);
 	wp_localize_script(
