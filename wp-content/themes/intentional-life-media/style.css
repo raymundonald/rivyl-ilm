@@ -10873,6 +10873,9 @@ p {
   .rm-container .container > [class*="col-"]:first-child {
     padding-right: 0; }
 
+.carousel-container .container {
+  max-width: 100%; }
+
 .gx-80px {
   --bs-gutter-x: 80px; }
 

@@ -539,7 +539,7 @@ function _post_query($args, $settings, $html = "<div class='post-grid-holder'>")
         }
         
 
-        $html .= "<div class='lm-container'>";
+        $html .= "<div class='carousel-container'>";
         $html .= "<div class='container'>";
 
         $parent_class = 'swiper swiper-post-slider';

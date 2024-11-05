@@ -308,7 +308,14 @@ $spacings_mobile: (
         }
     }
 }
-
+.carousel-container {
+    .container {
+        max-width: 100%;
+    }
+    .swiper-post-slider {
+        
+    }
+}
 .gx-80px {
     --bs-gutter-x: 80px;
 }
