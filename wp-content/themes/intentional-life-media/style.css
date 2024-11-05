@@ -10874,7 +10874,9 @@ p {
     padding-right: 0; }
 
 .carousel-container .container {
-  max-width: 100%; }
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0; }
 
 .gx-80px {
   --bs-gutter-x: 80px; }
@@ -11782,7 +11784,8 @@ section.grids.style-2 .grid-item .image-box {
 section.post .desc-box {
   max-width: 780px; }
 section.post .swiper-post-slider {
-  margin-right: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding)); }
+  margin-right: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding));
+  margin-left: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding)); }
 
 .post-grid {
   background-color: var(--white);

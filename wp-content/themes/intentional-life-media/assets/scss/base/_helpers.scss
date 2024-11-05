@@ -311,9 +311,10 @@ $spacings_mobile: (
 .carousel-container {
     .container {
         max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
     .swiper-post-slider {
-        
     }
 }
 .gx-80px {
