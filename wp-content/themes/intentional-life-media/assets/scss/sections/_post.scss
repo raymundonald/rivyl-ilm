@@ -6,6 +6,11 @@ section.post {
         margin-right: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding));
         margin-left: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding));
     }
+    .swiper-nav-holder {
+        max-width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 .post-grid {

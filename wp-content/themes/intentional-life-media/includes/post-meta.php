@@ -538,12 +538,31 @@ function __post_fields_()
 
         Field::make('text', 'posts_per_page', __('Post Per Page'))->set_width(50)->set_default_value(10),
         Field::make('checkbox', 'is_slider', __('Is Slider'))->set_width(50),
+        Field::make('select', 'slide_view_type', __('Slide View Type'))->set_width(100)
+            ->set_options(
+                array(
+                    ''              => 'Slides Per View',
+                    'slide-width'          => 'Slide Width',
+                )
+            )
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    )
+                )
+            ),
         Field::make('text', 'slides_per_view_wide', __('Slides Per View Wide'))->set_width(20)
             ->set_conditional_logic(
                 array(
                     array(
                         'field' => 'is_slider',
                         'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => '',
                     )
                 )
             ),
@@ -553,6 +572,10 @@ function __post_fields_()
                     array(
                         'field' => 'is_slider',
                         'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => '',
                     )
                 )
             ),
@@ -563,6 +586,10 @@ function __post_fields_()
                     array(
                         'field' => 'is_slider',
                         'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => '',
                     )
                 )
             ),
@@ -572,6 +599,10 @@ function __post_fields_()
                     array(
                         'field' => 'is_slider',
                         'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => '',
                     )
                 )
             ),
@@ -581,6 +612,76 @@ function __post_fields_()
                     array(
                         'field' => 'is_slider',
                         'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => '',
+                    )
+                )
+            ),
+            Field::make('text', 'slides_width_wide', __('Slides Width Wide'))->set_width(20)
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => 'slide-width',
+                    )
+                )
+            ),
+        Field::make('text', 'slides_width_desktop', __('Slides Width Desktop'))->set_width(20)
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => 'slide-width',
+                    )
+                )
+            ),
+
+        Field::make('text', 'slides_width_tablet_landscape', __('Slides Width Tablet Landscape'))->set_width(20)
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => 'slide-width',
+                    )
+                )
+            ),
+        Field::make('text', 'slides_width_tablet_portrait', __('Slides Width Tablet'))->set_width(20)
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => 'slide-width',
+                    )
+                )
+            ),
+        Field::make('text', 'slides_width_mobile', __('Slides Width Mobile'))->set_width(20)
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    ),
+                    array(
+                        'field' => 'slide_view_type',
+                        'value' => 'slide-width',
                     )
                 )
             ),

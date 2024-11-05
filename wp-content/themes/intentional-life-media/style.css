@@ -11786,6 +11786,10 @@ section.post .desc-box {
 section.post .swiper-post-slider {
   margin-right: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding));
   margin-left: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding)); }
+section.post .swiper-nav-holder {
+  max-width: 100%;
+  padding-right: 0;
+  padding-left: 0; }
 
 .post-grid {
   background-color: var(--white);
