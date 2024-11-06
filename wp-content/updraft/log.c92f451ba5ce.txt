@@ -1,0 +1,35 @@
+0000.000 (0) Opened log file at time: Wed, 06 Nov 2024 05:44:27 +0000 on http://ilm.local
+0000.002 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.6 WP: 6.6.2 PHP: 8.1.29 (cgi-fcgi, Windows NT BOSS_D 10.0 build 22631 (Windows 11) AMD64) MySQL: 8.0.16 (max packet size=16777216) WPLANG: en_US Server: nginx/1.16.0 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 4.7M | 6M) multisite: N openssl: OpenSSL 1.1.1w  11 Sep 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.004 (0) Free space on disk containing Updraft's temporary directory: 438042.9 MB
+0000.007 (0) Tasks: Backup files: 1 (schedule: unset) Backup DB: 1 (schedule: unset)
+0000.010 (0) Requesting semaphore lock (fd) (apparently not via scheduler)
+0000.015 (0) Set semaphore last lock (fd) time to 2024-11-06 05:44:27
+0000.017 (0) Semaphore lock (fd) complete
+0000.021 (0) Backup run: resumption=0, nonce=c92f451ba5ce, file_nonce=c92f451ba5ce begun at=1730871867 (0s ago), job type=backup
+0000.024 (0) Scheduling a resumption (1) after 300 seconds (1730872167) in case this run gets aborted
+0000.028 (0) Checking if we have a zip executable available
+0000.031 (0) Creation of backups of directories: beginning
+0000.037 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0000.775 (0) Total entities for the zip file: 415 directories, 2002 files (0 skipped as non-modified), 36.4 MB
+0000.821 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 100 files added (on-disk size: 0 KB)
+0000.863 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 200 files added (on-disk size: 0 KB)
+0000.904 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 300 files added (on-disk size: 0 KB)
+0000.946 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 400 files added (on-disk size: 0 KB)
+0000.989 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 500 files added (on-disk size: 0 KB)
+0001.032 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 600 files added (on-disk size: 0 KB)
+0001.072 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 700 files added (on-disk size: 0 KB)
+0001.113 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 800 files added (on-disk size: 0 KB)
+0001.153 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 900 files added (on-disk size: 0 KB)
+0001.194 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0001.196 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (14.6 MB, 2002 files batched, 1001 (1001) added so far); re-opening (prior size: 0 KB)
+0018.842 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1100 files added (on-disk size: 4324.5 KB)
+0018.885 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1200 files added (on-disk size: 4324.5 KB)
+0018.933 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1300 files added (on-disk size: 4324.5 KB)
+0018.979 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1400 files added (on-disk size: 4324.5 KB)
+0019.021 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1500 files added (on-disk size: 4324.5 KB)
+0019.061 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1600 files added (on-disk size: 4324.5 KB)
+0019.102 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1700 files added (on-disk size: 4324.5 KB)
+0019.142 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1800 files added (on-disk size: 4324.5 KB)
+0019.183 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 1900 files added (on-disk size: 4324.5 KB)
+0019.223 (0) Zip: backup_2024-11-06-0544_Intentional_Life_Media_c92f451ba5ce-plugins.zip.tmp: 2000 files added (on-disk size: 4324.5 KB)
+0019.226 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (21.8 MB, 2002 files batched, 1001 (2002) added so far); re-opening (prior size: 4324.5 KB)
