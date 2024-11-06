@@ -11,6 +11,23 @@ section.post {
         padding-right: 0;
         padding-left: 0;
     }
+    &.slide-width {
+        .swiper-slide {
+            width: var(--slides-width-wide) !important;
+            @include responsive(xs-md) {
+                width: var(--slides-width-desktop) !important;
+            }
+            @include responsive(xs-sm) {
+                width: var(--slides-width-tablet-landscape) !important;
+            }
+            @include responsive(xs) {
+                width: var(--slides-width-tablet-portrait) !important;
+            }
+            @include responsive(mobile) {
+                width: var(--slides-width-mobile) !important;
+            }
+        }
+    }
 }
 
 .post-grid {

@@ -10,7 +10,7 @@ function action_module_content()
             'layouts',
         );
         $template = get_page_template_slug();
-        
+
         if ($template == 'templates/page-modules.php' || in_array(get_post_type(), $post_types)) {
             $content_html = '<!-- wp:html -->';
             $content_html .= __sections(get_the_ID());
@@ -232,47 +232,88 @@ function __sections($id)
                     break;
                 case 'post':
                     $post_type = $section['post_type'][0]['_type'];
-                    $slides_per_view_wide = isset($section['slides_per_view_wide']) ? $section['slides_per_view_wide'] : 3.95;
-                    $slides_per_view_desktop = isset($section['slides_per_view_desktop']) ? $section['slides_per_view_desktop'] : 2.95;
-                    $slides_per_view_tablet_landscape = isset($section['slides_per_view_tablet_landscape']) ? $section['slides_per_view_tablet_landscape'] : 1.95;
-                    $slides_per_view_tablet_portrait = isset($section['slides_per_view_tablet_portrait']) ? $section['slides_per_view_tablet_portrait'] : 1.95;
-                    $slides_per_view_mobile = isset($section['slides_per_view_mobile']) ? $section['slides_per_view_mobile'] : 0.95;
+
+                    $slide_view_type = isset($section['slide_view_type']) ? $section['slide_view_type'] : '';
+
+                    if ($slide_view_type == 'slide-width') {
+                        $section_classes[] = 'slide-width';
+
+                        $slides_width_wide = $section['slides_width_wide'] ? $section['slides_width_wide'] : '390px';
+                        $slides_width_desktop = $section['slides_width_desktop'] ? $section['slides_width_desktop'] : '370px';
+                        $slides_width_tablet_landscape = $section['slides_width_tablet_landscape']? $section['slides_width_tablet_landscape'] : '350px';
+                        $slides_width_tablet_portrait = $section['slides_width_tablet_portrait'] ? $section['slides_width_tablet_portrait'] : '300px';
+                        $slides_width_mobile = $section['slides_width_mobile'] ? $section['slides_width_mobile'] : '275px';
+
+                        $inline_styles[] = "--slides-width-wide: $slides_width_wide";
+                        $inline_styles[] = "--slides-width-desktop: $slides_width_desktop";
+                        $inline_styles[] = "--slides-width-tablet-landscape: $slides_width_tablet_landscape";
+                        $inline_styles[] = "--slides-width-tablet-portrait: $slides_width_tablet_portrait";
+                        $inline_styles[] = "--slides-width-mobile: $slides_width_mobile";
+                    } else {
+                        $slides_per_view_wide = $section['slides_per_view_wide'] ? $section['slides_per_view_wide'] : 3.95;
+                        $slides_per_view_desktop = $section['slides_per_view_desktop'] ? $section['slides_per_view_desktop'] : 2.95;
+                        $slides_per_view_tablet_landscape = $section['slides_per_view_tablet_landscape'] ? $section['slides_per_view_tablet_landscape'] : 1.95;
+                        $slides_per_view_tablet_portrait = $section['slides_per_view_tablet_portrait'] ? $section['slides_per_view_tablet_portrait'] : 1.95;
+                        $slides_per_view_mobile = $section['slides_per_view_mobile'] ? $section['slides_per_view_mobile'] : 0.95;
+                    }
+
+
+
                     $section_classes[] = "post lg-padding-top lg-padding-bottom left-right-padding post-$post_type";
                     $sections_val = serialize($section);
                     $section_html = "[post data='$sections_val']";
                     $slider_id = "slider_" . str_replace('-', '_', $section_id);
-                    if ($section['is_slider']) {
-                        $scripts_val .= "
 
-    var $slider_id = new Swiper('#$section_id .swiper-post-slider', {
-        spaceBetween: 20,
-        pagination: {
-            el: '#$section_id .swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '#$section_id .swiper-button-next',
-            prevEl: '#$section_id .swiper-button-prev',
-        },
-        breakpoints: {
-            0: {
-                slidesPerView: $slides_per_view_mobile,
-            },
-            768: {
-                slidesPerView: $slides_per_view_tablet_portrait,
-            },
-            992: {
-                slidesPerView: $slides_per_view_tablet_landscape,
-            },
-            1200: {
-                slidesPerView: $slides_per_view_desktop,
-            },
-            1441: {
-                slidesPerView: $slides_per_view_wide,
-            },
-        }
-    });
-";
+                    if ($section['is_slider']) {
+                        if ($slide_view_type == 'slide-width') {
+                            $scripts_val .= "
+
+                            var $slider_id = new Swiper('#$section_id .swiper-post-slider', {
+                                spaceBetween: 20,
+                                slidesPerView: 'auto',
+                                pagination: {
+                                    el: '#$section_id .swiper-pagination',
+                                    clickable: true,
+                                },
+                                navigation: {
+                                    nextEl: '#$section_id .swiper-button-next',
+                                    prevEl: '#$section_id .swiper-button-prev',
+                                }
+                            });
+                        ";
+                        } else {
+                            $scripts_val .= "
+
+                            var $slider_id = new Swiper('#$section_id .swiper-post-slider', {
+                                spaceBetween: 20,
+                                pagination: {
+                                    el: '#$section_id .swiper-pagination',
+                                    clickable: true,
+                                },
+                                navigation: {
+                                    nextEl: '#$section_id .swiper-button-next',
+                                    prevEl: '#$section_id .swiper-button-prev',
+                                },
+                                breakpoints: {
+                                    0: {
+                                        slidesPerView: $slides_per_view_mobile,
+                                    },
+                                    768: {
+                                        slidesPerView: $slides_per_view_tablet_portrait,
+                                    },
+                                    992: {
+                                        slidesPerView: $slides_per_view_tablet_landscape,
+                                    },
+                                    1200: {
+                                        slidesPerView: $slides_per_view_desktop,
+                                    },
+                                    1441: {
+                                        slidesPerView: $slides_per_view_wide,
+                                    },
+                                }
+                            });
+                        ";
+                        }
                     }
                     break;
                 case 'accordion':
@@ -537,7 +578,7 @@ function _post_query($args, $settings, $html = "<div class='post-grid-holder'>")
         if ($settings['pagination'] == true) {
             $html .= _swiper_pagination();
         }
-        
+
 
         $html .= "<div class='carousel-container'>";
         $html .= "<div class='container'>";

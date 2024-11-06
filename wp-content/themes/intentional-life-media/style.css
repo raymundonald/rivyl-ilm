@@ -11790,6 +11790,20 @@ section.post .swiper-nav-holder {
   max-width: 100%;
   padding-right: 0;
   padding-left: 0; }
+section.post.slide-width .swiper-slide {
+  width: var(--slides-width-wide) !important; }
+  @media screen and (max-width: 1199px) {
+    section.post.slide-width .swiper-slide {
+      width: var(--slides-width-desktop) !important; } }
+  @media screen and (max-width: 991px) {
+    section.post.slide-width .swiper-slide {
+      width: var(--slides-width-tablet-landscape) !important; } }
+  @media screen and (max-width: 767px) {
+    section.post.slide-width .swiper-slide {
+      width: var(--slides-width-tablet-portrait) !important; } }
+  @media screen and (max-width: 575px) {
+    section.post.slide-width .swiper-slide {
+      width: var(--slides-width-mobile) !important; } }
 
 .post-grid {
   background-color: var(--white);
