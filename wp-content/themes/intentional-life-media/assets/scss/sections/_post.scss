@@ -4,12 +4,15 @@ section.post {
     }
     .swiper-post-slider {
         margin-right: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding));
-        margin-left: calc(calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding)) + 20px);
+        margin-left: calc(var(--left-right-padding) - var(--left-right-padding) - var(--left-right-padding));
     }
     .swiper-nav-holder {
         max-width: 100%;
         padding-right: 0;
         padding-left: 0;
+    }
+    .swiper-wrapper {
+        padding-left: 20px;
     }
     &.slide-width {
         .swiper-slide {
