@@ -11790,6 +11790,8 @@ section.post .swiper-nav-holder {
   max-width: 100%;
   padding-right: 0;
   padding-left: 0; }
+section.post .swiper-wrapper {
+  padding-left: 20px; }
 section.post.slide-width .swiper-slide {
   width: var(--slides-width-wide) !important; }
   @media screen and (max-width: 1199px) {
