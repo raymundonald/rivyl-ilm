@@ -1,6 +1,26 @@
 section.post-sliders {
+    --slides-width-wide: 390px;
+    --slides-width-desktop: 370px;
+    --slides-width-tablet-landscape: 350px;
+    --slides-width-tablet-portrait: 300px;
+    --slides-width-mobile: 275px;
     .swiper-wrapper {
         padding-left: 20px;
+        .swiper-slide {
+            width: var(--slides-width-wide) !important;
+            @include responsive(xs-md) {
+                width: var(--slides-width-desktop) !important;
+            }
+            @include responsive(xs-sm) {
+                width: var(--slides-width-tablet-landscape) !important;
+            }
+            @include responsive(xs) {
+                width: var(--slides-width-tablet-portrait) !important;
+            }
+            @include responsive(mobile) {
+                width: var(--slides-width-mobile) !important;
+            }
+        }
     }
 }
 section.post {

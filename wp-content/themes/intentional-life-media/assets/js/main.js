@@ -26,6 +26,7 @@ function swiper_sliders() {
             $id = jQuery(this).attr('id');
             var swiper = new Swiper('#' + $id + ' .swiper-post-slider', {
                 spaceBetween: 20,
+                slidesPerView: 'auto',
                 pagination: {
                     el: '#' + $id + ' .swiper-pagination',
                     clickable: true,
@@ -34,23 +35,7 @@ function swiper_sliders() {
                     nextEl: '#' + $id + ' .swiper-button-next',
                     prevEl: '#' + $id + ' .swiper-button-prev',
                 },
-                breakpoints: {
-                    0: {
-                        slidesPerView: 1.2,
-                    },
-                    768: {
-                        slidesPerView: 1.95,
-                    },
-                    992: {
-                        slidesPerView: 2.95,
-                    },
-                    1200: {
-                        slidesPerView: 2.95,
-                    },
-                    1441: {
-                        slidesPerView: 3.95,
-                    },
-                }
+
             });
 
         });
