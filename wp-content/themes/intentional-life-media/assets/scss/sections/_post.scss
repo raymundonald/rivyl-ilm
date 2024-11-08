@@ -139,7 +139,6 @@ section.post {
 }
 .post-post {
     .post-grid {
-        height: calc(var(--height, 424px) + 140px);
         .image-box {
             padding: 0;
             height: 55%;
@@ -182,6 +181,9 @@ section.post {
                     opacity: 1;
                 }
             }
+        }
+        @include responsive(sm-lg) {
+            height: calc(var(--height, 424px) + 140px);
         }
     }
 }
