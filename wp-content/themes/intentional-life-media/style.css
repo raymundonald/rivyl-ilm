@@ -11892,7 +11892,6 @@ section.post.slide-width .swiper-slide {
   flex-direction: column; }
   .post-post .post-grid .desc-box,
   .post-podcasts .post-grid .desc-box {
-    opacity: 0;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -11901,6 +11900,10 @@ section.post.slide-width .swiper-slide {
     -ms-transition: 500ms;
     -o-transition: 500ms;
     transition: 500ms; }
+    @media (min-width: 768px) {
+      .post-post .post-grid .desc-box,
+      .post-podcasts .post-grid .desc-box {
+        opacity: 0; } }
 
 .post-post .post-grid .image-box {
   padding: 0;
