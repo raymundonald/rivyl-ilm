@@ -202,7 +202,9 @@ section.post {
     .swiper-post-slider.fixed-height {
         .post-grid {
             .post-content {
-                height: 124px;
+                @include responsive(sm-lg) {
+                    height: 124px;
+                }
             }
         }
     }
