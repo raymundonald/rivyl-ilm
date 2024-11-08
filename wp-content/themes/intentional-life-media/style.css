@@ -11864,11 +11864,6 @@ section.post.slide-width .swiper-slide {
   position: relative; }
   .post-grid .post-content {
     padding: 40px;
-    position: absolute;
-    background-color: var(--white);
-    left: 0;
-    right: 0;
-    top: auto;
     color: var(--forest-gray);
     -webkit-transition: 500ms;
     -moz-transition: 500ms;
@@ -11883,6 +11878,13 @@ section.post.slide-width .swiper-slide {
     @media screen and (max-width: 767px) {
       .post-grid .post-content {
         padding: 20px; } }
+    @media (min-width: 768px) {
+      .post-grid .post-content {
+        position: absolute;
+        background-color: var(--white);
+        left: 0;
+        right: 0;
+        top: auto; } }
 
 .post-post .post-grid,
 .post-podcasts .post-grid {
@@ -11917,6 +11919,12 @@ section.post.slide-width .swiper-slide {
     -o-transition: 500ms;
     transition: 500ms;
     color: inherit; }
+    @media screen and (max-width: 767px) {
+      .post-post .post-grid .desc-box {
+        display: none; } }
+  @media screen and (max-width: 767px) {
+    .post-post .post-grid .post-taxonomy-term {
+      display: none; } }
   .post-post .post-grid .title {
     overflow: hidden;
     display: -webkit-box;

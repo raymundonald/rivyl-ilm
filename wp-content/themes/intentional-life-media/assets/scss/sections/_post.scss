@@ -103,15 +103,8 @@ section.post {
 
     .post-content {
         padding: 40px;
-        position: absolute;
-        background-color: var(--white);
-
-        left: 0;
-        right: 0;
-        top: auto;
         color: var(--forest-gray);
         @include transition(500ms);
-        //bottom: var(--bottom);
         a {
             color: var(--forest-gray);
         }
@@ -120,6 +113,13 @@ section.post {
         }
         @include responsive(xs) {
             padding: 20px;
+        }
+        @include responsive(sm-lg) {
+            position: absolute;
+            background-color: var(--white);
+            left: 0;
+            right: 0;
+            top: auto;
         }
     }
 }
@@ -152,6 +152,14 @@ section.post {
             line-clamp: 5;
             @include transition(500ms);
             color: inherit;
+            @include responsive(xs) {
+                display: none;
+            }
+        }
+        .post-taxonomy-term {
+            @include responsive(xs) {
+                display: none;
+            }
         }
         .title {
             overflow: hidden;
