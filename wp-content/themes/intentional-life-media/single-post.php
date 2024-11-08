@@ -23,7 +23,7 @@ while (have_posts()) {
                     </span>
                 <?php } ?>
             </div>
-            <?
+            <?php
             echo __heading(array(
                 'heading' => get_the_title(),
                 'tag' => 'h1',
