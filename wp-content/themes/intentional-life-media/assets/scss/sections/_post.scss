@@ -1,4 +1,5 @@
 section.post-sliders {
+    position: relative;
     .swiper-wrapper {
         padding-left: 20px;
         .swiper-slide {
@@ -16,6 +17,22 @@ section.post-sliders {
                 width: var(--slides-width-mobile) !important;
             }
         }
+    }
+    .swiper-pagination {
+        @include responsive(xs) {
+            position: absolute;
+            bottom: 0;
+            top: auto;
+            transform: none;
+            margin: 0 !important;
+            left: 0;
+            right: 0;
+            width: auto;
+            max-width: 100%;
+        }
+    }
+    @include responsive(xs) {
+        padding-bottom: 60px;
     }
 }
 .blog {
