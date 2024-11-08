@@ -11781,26 +11781,26 @@ section.grids.style-1 .grid-item .image-box {
 section.grids.style-2 .grid-item .image-box {
   padding: 55% 0; }
 
-section.post-sliders {
+section.post-sliders .post-sliders-post {
   position: relative; }
-  section.post-sliders .swiper-wrapper {
+  section.post-sliders .post-sliders-post .swiper-wrapper {
     padding-left: 20px; }
-    section.post-sliders .swiper-wrapper .swiper-slide {
+    section.post-sliders .post-sliders-post .swiper-wrapper .swiper-slide {
       width: var(--slides-width-wide) !important; }
       @media screen and (max-width: 1199px) {
-        section.post-sliders .swiper-wrapper .swiper-slide {
+        section.post-sliders .post-sliders-post .swiper-wrapper .swiper-slide {
           width: var(--slides-width-desktop) !important; } }
       @media screen and (max-width: 991px) {
-        section.post-sliders .swiper-wrapper .swiper-slide {
+        section.post-sliders .post-sliders-post .swiper-wrapper .swiper-slide {
           width: var(--slides-width-tablet-landscape) !important; } }
       @media screen and (max-width: 767px) {
-        section.post-sliders .swiper-wrapper .swiper-slide {
+        section.post-sliders .post-sliders-post .swiper-wrapper .swiper-slide {
           width: var(--slides-width-tablet-portrait) !important; } }
       @media screen and (max-width: 575px) {
-        section.post-sliders .swiper-wrapper .swiper-slide {
+        section.post-sliders .post-sliders-post .swiper-wrapper .swiper-slide {
           width: var(--slides-width-mobile) !important; } }
   @media screen and (max-width: 767px) {
-    section.post-sliders .swiper-pagination {
+    section.post-sliders .post-sliders-post .swiper-pagination {
       position: absolute;
       bottom: 0;
       top: auto;
@@ -11811,7 +11811,7 @@ section.post-sliders {
       width: auto;
       max-width: 100%; } }
   @media screen and (max-width: 767px) {
-    section.post-sliders {
+    section.post-sliders .post-sliders-post {
       padding-bottom: 60px; } }
 
 .blog section.post-sliders {
