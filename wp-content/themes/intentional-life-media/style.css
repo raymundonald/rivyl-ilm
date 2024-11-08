@@ -11783,6 +11783,9 @@ section.grids.style-2 .grid-item .image-box {
 
 section.post-sliders .post-sliders-post {
   position: relative; }
+  @media screen and (max-width: 767px) {
+    section.post-sliders .post-sliders-post .cat-name-holder {
+      margin-bottom: 0 !important; } }
   section.post-sliders .post-sliders-post .swiper-wrapper {
     padding-left: 20px; }
     section.post-sliders .post-sliders-post .swiper-wrapper .swiper-slide {

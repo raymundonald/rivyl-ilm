@@ -792,7 +792,7 @@ function _posts_sliders($taxonomy, $args,  $settings)
         );
         $html .= "<div class='post-sliders-post xs-margin-bottom' id='$id'>";
 
-        $html .= "<div class='container xs-margin-bottom'>";
+        $html .= "<div class='container cat-name-holder xs-margin-bottom'>";
         $html .= "<div class='row g-4 align-items-center'>";
 
         $html .= "<div class='col-lg-6 col-md-7'>";

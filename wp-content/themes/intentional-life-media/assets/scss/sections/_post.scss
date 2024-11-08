@@ -1,6 +1,11 @@
 section.post-sliders {
     .post-sliders-post {
         position: relative;
+        .cat-name-holder {
+            @include responsive(xs) {
+                margin-bottom: 0 !important;
+            }
+        }
         .swiper-wrapper {
             padding-left: 20px;
             .swiper-slide {
