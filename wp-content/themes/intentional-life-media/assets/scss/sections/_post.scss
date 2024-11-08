@@ -214,9 +214,11 @@ section.post {
     .post-grid {
         height: var(--height);
         .image-box {
-            --padding: 30%;
             flex-grow: 1;
             @include transition(500ms);
+            @include responsive(xs) {
+                --padding: 40%;
+            }
         }
         .post-content {
             padding: 34px 20px;
