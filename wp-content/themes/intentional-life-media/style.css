@@ -11820,7 +11820,7 @@ section.post-sliders .post-sliders-post {
 
 .blog section.post-sliders {
   --slides-width-wide: 455px;
-  --slides-width-desktop: 400;
+  --slides-width-desktop: 400px;
   --slides-width-tablet-landscape: 350px;
   --slides-width-tablet-portrait: 300px;
   --slides-width-mobile: 275px; }
