@@ -1,9 +1,4 @@
 section.post-sliders {
-    --slides-width-wide: 390px;
-    --slides-width-desktop: 370px;
-    --slides-width-tablet-landscape: 350px;
-    --slides-width-tablet-portrait: 300px;
-    --slides-width-mobile: 275px;
     .swiper-wrapper {
         padding-left: 20px;
         .swiper-slide {
@@ -21,6 +16,24 @@ section.post-sliders {
                 width: var(--slides-width-mobile) !important;
             }
         }
+    }
+}
+.blog {
+    section.post-sliders {
+        --slides-width-wide: 455px;
+        --slides-width-desktop: 400;
+        --slides-width-tablet-landscape: 350px;
+        --slides-width-tablet-portrait: 300px;
+        --slides-width-mobile: 275px;
+    }
+}
+.post-type-archive-podcasts {
+    section.post-sliders {
+        --slides-width-wide: 390px;
+        --slides-width-desktop: 370px;
+        --slides-width-tablet-landscape: 350px;
+        --slides-width-tablet-portrait: 300px;
+        --slides-width-mobile: 275px;
     }
 }
 section.post {
