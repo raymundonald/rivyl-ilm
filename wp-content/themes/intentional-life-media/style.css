@@ -11962,6 +11962,7 @@ section.post.slide-width .swiper-slide {
   height: var(--height); }
   .post-podcasts .post-grid .image-box {
     flex-grow: 1;
+    --padding: 30%;
     -webkit-transition: 500ms;
     -moz-transition: 500ms;
     -ms-transition: 500ms;

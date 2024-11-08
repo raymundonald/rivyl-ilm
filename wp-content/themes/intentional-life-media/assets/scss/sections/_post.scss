@@ -215,6 +215,7 @@ section.post {
         height: var(--height);
         .image-box {
             flex-grow: 1;
+            --padding: 30%;
             @include transition(500ms);
             @include responsive(xs) {
                 --padding: 40%;
