@@ -11907,8 +11907,13 @@ section.post.slide-width .swiper-slide {
   .post-post .post-grid .image-box {
     padding: 0;
     height: 55%; }
-  .post-post .post-grid .post-content {
-    top: calc(var(--image-height) - 20px); }
+    @media screen and (max-width: 767px) {
+      .post-post .post-grid .image-box {
+        height: auto;
+        padding: 60% 0; } }
+  @media (min-width: 768px) {
+    .post-post .post-grid .post-content {
+      top: calc(var(--image-height) - 20px); } }
   .post-post .post-grid .desc-box {
     -webkit-line-clamp: 5;
     /* number of lines to show */

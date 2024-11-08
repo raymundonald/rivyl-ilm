@@ -46,7 +46,7 @@ section.post-sliders {
 .blog {
     section.post-sliders {
         --slides-width-wide: 455px;
-        --slides-width-desktop: 400;
+        --slides-width-desktop: 400px;
         --slides-width-tablet-landscape: 350px;
         --slides-width-tablet-portrait: 300px;
         --slides-width-mobile: 275px;
@@ -143,9 +143,15 @@ section.post {
         .image-box {
             padding: 0;
             height: 55%;
+            @include responsive(xs) {
+                height: auto;
+                padding: 60% 0;
+            }
         }
-        .post-content {
-            top: calc(var(--image-height) - 20px);
+        @include responsive(sm-lg) {
+            .post-content {
+                top: calc(var(--image-height) - 20px);
+            }
         }
         .desc-box {
             -webkit-line-clamp: 5; /* number of lines to show */
