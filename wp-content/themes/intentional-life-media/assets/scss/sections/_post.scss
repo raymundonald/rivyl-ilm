@@ -208,6 +208,7 @@ section.post {
     }
 
     .post-grid {
+        height: var(--height);
         .image-box {
             --padding: 30%;
             flex-grow: 1;
@@ -237,16 +238,17 @@ section.post {
             -webkit-box-orient: vertical;
             color: inherit;
         }
-        @include on-event {
-            .post-content {
-                height: var(--height, 228.38px) !important;
-                .desc-box {
-                    opacity: 1;
-                }
-            }
-        }
+
         @include responsive(sm-lg) {
             height: var(--height);
+            @include on-event {
+                .post-content {
+                    height: var(--height, 228.38px) !important;
+                    .desc-box {
+                        opacity: 1;
+                    }
+                }
+            }
         }
     }
 }
