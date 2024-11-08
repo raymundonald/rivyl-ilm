@@ -129,11 +129,13 @@ section.post {
         display: flex;
         flex-direction: column;
         .desc-box {
-            opacity: 0;
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             @include transition(500ms);
+            @include responsive(sm-lg) {
+                opacity: 0;
+            }
         }
     }
 }

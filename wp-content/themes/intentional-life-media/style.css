@@ -11952,8 +11952,9 @@ section.post.slide-width .swiper-slide {
   margin-bottom: 8px !important; }
   .post-podcasts .podcast-heading svg {
     margin-left: 1rem; }
-.post-podcasts .swiper-post-slider.fixed-height .post-grid .post-content {
-  height: 124px; }
+@media (min-width: 768px) {
+  .post-podcasts .swiper-post-slider.fixed-height .post-grid .post-content {
+    height: 124px; } }
 .post-podcasts .post-grid {
   height: var(--height); }
   .post-podcasts .post-grid .image-box {
