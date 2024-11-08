@@ -208,7 +208,6 @@ section.post {
     }
 
     .post-grid {
-        height: var(--height);
         .image-box {
             --padding: 30%;
             flex-grow: 1;
@@ -245,6 +244,9 @@ section.post {
                     opacity: 1;
                 }
             }
+        }
+        @include responsive(sm-lg) {
+            height: var(--height);
         }
     }
 }
