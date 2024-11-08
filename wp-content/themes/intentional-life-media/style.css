@@ -11812,7 +11812,8 @@ section.post-sliders .post-sliders-post {
       max-width: 100%; } }
   @media screen and (max-width: 767px) {
     section.post-sliders .post-sliders-post {
-      padding-bottom: 60px; } }
+      padding-bottom: 60px;
+      margin-bottom: 50px !important; } }
 
 .blog section.post-sliders {
   --slides-width-wide: 455px;
