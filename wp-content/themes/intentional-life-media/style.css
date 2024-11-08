@@ -11877,6 +11877,12 @@ section.post.slide-width .swiper-slide {
     transition: 500ms; }
     .post-grid .post-content a {
       color: var(--forest-gray); }
+    @media screen and (max-width: 991px) {
+      .post-grid .post-content {
+        padding: 30px; } }
+    @media screen and (max-width: 767px) {
+      .post-grid .post-content {
+        padding: 20px; } }
 
 .post-post .post-grid,
 .post-podcasts .post-grid {

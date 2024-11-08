@@ -115,6 +115,12 @@ section.post {
         a {
             color: var(--forest-gray);
         }
+        @include responsive(xs-sm) {
+            padding: 30px;
+        }
+        @include responsive(xs) {
+            padding: 20px;
+        }
     }
 }
 .post-post,
