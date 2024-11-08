@@ -11786,7 +11786,7 @@ section.post-sliders {
   --slides-width-desktop: 370px;
   --slides-width-tablet-landscape: 350px;
   --slides-width-tablet-portrait: 300px;
-  --slides-width-width-mobile: 275px; }
+  --slides-width-mobile: 275px; }
   section.post-sliders .swiper-wrapper {
     padding-left: 20px; }
     section.post-sliders .swiper-wrapper .swiper-slide {
