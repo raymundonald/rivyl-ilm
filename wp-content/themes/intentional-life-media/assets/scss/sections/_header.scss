@@ -173,3 +173,7 @@ body.mobile-menu-active {
         }
     }
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

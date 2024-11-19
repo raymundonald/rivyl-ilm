@@ -18,6 +18,13 @@ function header_menu() {
     offCanvasMenu.addEventListener('hide.bs.offcanvas', function () {
         jQuery('body').removeClass('mobile-menu-active');
     });
+    jQuery('.dropdown').hover(function () {
+        jQuery(this).addClass('show');
+        jQuery(this).find('.dropdown-menu').addClass('show');
+    }, function () {
+        jQuery(this).removeClass('show');
+        jQuery(this).find('.dropdown-menu').removeClass('show');
+    });
 }
 function swiper_sliders() {
 

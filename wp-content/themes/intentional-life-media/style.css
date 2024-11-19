@@ -11483,7 +11483,8 @@ body.mobile-menu-active header .menu-burger .icon .menu {
 .navbar-nav .menu-item .dropdown-menu {
   border: 0;
   border-radius: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: transparent; }
   .navbar-nav .menu-item .dropdown-menu > .menu-item.current-menu-item .dropdown-item {
     background-color: transparent;
     color: var(--torquoise); }
