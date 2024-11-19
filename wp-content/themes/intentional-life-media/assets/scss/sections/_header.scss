@@ -164,3 +164,9 @@ body.mobile-menu-active {
         }
     }
 }
+
+.dropdown-toggle {
+    @include on-event {
+        color: var(--torquoise);
+    }
+}
