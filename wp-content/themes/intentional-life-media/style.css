@@ -10904,6 +10904,12 @@ p {
     margin-left: auto;
     margin-right: auto; }
 
+.hover-tangerine:hover, .hover-tangerine:active, .hover-tangerine:focus {
+  color: var(--tangerine); }
+
+.hover-white:hover, .hover-white:active, .hover-white:focus {
+  color: var(--white); }
+
 @media screen and (max-width: 991px) {
   #wpadminbar {
     display: none; } }
@@ -10920,7 +10926,12 @@ img {
   height: auto; }
 
 a {
-  color: inherit; }
+  color: inherit;
+  -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+  -ms-transition: 300ms;
+  -o-transition: 300ms;
+  transition: 300ms; }
   a:hover, a:active, a:focus {
     color: var(--torquoise); }
 

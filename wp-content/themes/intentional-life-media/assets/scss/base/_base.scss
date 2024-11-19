@@ -19,6 +19,7 @@ img {
 
 a {
     color: inherit;
+    @include transition(300ms);
     @include on-event {
         color: var(--torquoise);
     }

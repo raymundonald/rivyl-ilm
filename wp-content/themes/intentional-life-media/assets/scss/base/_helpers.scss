@@ -356,3 +356,15 @@ $spacings_mobile: (
         }
     }
 }
+
+.hover-tangerine {
+    @include on-event {
+        color: var(--tangerine);
+    }
+}
+
+.hover-white {
+    @include on-event {
+        color: var(--white);
+    }
+}
