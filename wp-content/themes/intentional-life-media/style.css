@@ -11490,9 +11490,6 @@ body.mobile-menu-active header .menu-burger .icon .menu {
     .navbar-nav .menu-item .dropdown-menu > .menu-item .dropdown-item:hover, .navbar-nav .menu-item .dropdown-menu > .menu-item .dropdown-item:active, .navbar-nav .menu-item .dropdown-menu > .menu-item .dropdown-item:focus {
       color: var(--torquoise); }
 
-.dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-toggle:focus {
-  color: var(--torquoise); }
-
 footer {
   color: var(--white);
   background-size: 364px;

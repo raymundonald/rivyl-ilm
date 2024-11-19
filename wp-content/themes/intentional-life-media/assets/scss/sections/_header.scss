@@ -140,6 +140,11 @@ body.mobile-menu-active {
             font-weight: 900;
             text-transform: uppercase;
             color: var(--forest-gray);
+            &.dropdown-toggle {
+                @include on-event {
+                    color: var(--torquoise);
+                }
+            }
         }
         .dropdown-menu {
             border: 0;
@@ -162,11 +167,5 @@ body.mobile-menu-active {
                 }
             }
         }
-    }
-}
-
-.dropdown-toggle {
-    @include on-event {
-        color: var(--torquoise);
     }
 }
