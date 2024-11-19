@@ -11476,6 +11476,8 @@ body.mobile-menu-active header .menu-burger .icon .menu {
   font-weight: 900;
   text-transform: uppercase;
   color: var(--forest-gray); }
+  .navbar-nav .menu-item > .nav-link.dropdown-toggle:hover, .navbar-nav .menu-item > .nav-link.dropdown-toggle:active, .navbar-nav .menu-item > .nav-link.dropdown-toggle:focus {
+    color: var(--torquoise); }
 .navbar-nav .menu-item .dropdown-menu {
   border: 0;
   border-radius: 0;
