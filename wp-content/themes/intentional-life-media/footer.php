@@ -16,16 +16,16 @@ if (is_single()) {
                     <div class="col-12 col-lg">
                         <?php dynamic_sidebar('footer_column_1') ?>
                     </div>
-                    <div class="col-12 col-md">
+                    <div class="col-12 col-md d-none">
                         <?php dynamic_sidebar('footer_column_2') ?>
                     </div>
-                    <div class="col-12 col-md">
+                    <div class="col-12 col-md d-none">
                         <?php dynamic_sidebar('footer_column_3') ?>
                     </div>
-                    <div class="col-12 col-md">
+                    <div class="col-12 col-md d-none">
                         <?php dynamic_sidebar('footer_column_4') ?>
                     </div>
-                    <div class="col-12 col-md">
+                    <div class="col-12 col-md d-none">
                         <?php dynamic_sidebar('footer_column_5') ?>
                     </div>
                 </div>
