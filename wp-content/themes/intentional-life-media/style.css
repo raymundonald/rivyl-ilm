@@ -11780,7 +11780,12 @@ section.grids .grid-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden; }
+    overflow: hidden;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -ms-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms; }
     section.grids .grid-container .grid-item .image-box img {
       object-fit: cover;
       width: 100%;
@@ -11795,12 +11800,13 @@ section.grids .grid-container {
       -o-transform: scale(1.1);
       transform: scale(1.1); }
 section.grids .title,
+section.grids .heading,
 section.grids .desc-box {
-  -webkit-transition: 500ms;
-  -moz-transition: 500ms;
-  -ms-transition: 500ms;
-  -o-transition: 500ms;
-  transition: 500ms; }
+  -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+  -ms-transition: 300ms;
+  -o-transition: 300ms;
+  transition: 300ms; }
 section.grids .text-style-bordered-left-parent .desc-box {
   border-color: currentColor; }
 section.grids.style-1 .grid-item .heading {

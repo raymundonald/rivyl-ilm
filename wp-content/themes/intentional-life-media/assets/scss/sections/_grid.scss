@@ -17,7 +17,7 @@ section.grids {
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
-
+            @include transition(300ms);
             .image-box {
                 img {
                     object-fit: cover;
@@ -38,8 +38,9 @@ section.grids {
         }
     }
     .title,
+    .heading,
     .desc-box {
-        @include transition(500ms);
+        @include transition(300ms);
     }
     .text-style-bordered-left-parent .desc-box {
         border-color: currentColor;
