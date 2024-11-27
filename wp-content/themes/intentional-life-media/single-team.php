@@ -56,7 +56,7 @@ $posts = get_posts(array(
                 ?>
             </div>
         </div>
-        <div class="button-tangerine col-auto button-box text-center md-margin-top"><a href="#" id="load-more-team">More</a></div>
+        <div class="button-tangerine col-auto button-box text-center md-margin-top ajax-btn"><a href="#" id="load-more-team">More</a></div>
     </div>
 </section>
 

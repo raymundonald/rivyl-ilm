@@ -14,13 +14,13 @@ function post_ajax()
 
 	$the_query = new WP_Query($args);
 
-
+	$count = $the_query->found_posts;
 	if ($the_query->have_posts()) {
 		while ($the_query->have_posts()) {
 			$the_query->the_post();
 			$post_id = get_the_ID();
 			if ($post_type == 'team') {
-				echo "<div class='col-lg-3 col-md-6 post-item' post_id='$post_id'>";
+				echo "<div class='col-lg-3 col-md-6 post-item' $count post_id='$post_id'>";
 				echo _team_grid(array(
 					'id' => $post_id,
 					'post_title' => get_the_title(),
@@ -30,6 +30,12 @@ function post_ajax()
 			}
 		}
 	}
+
+	if ($count <= $posts_per_page) {
+		echo '<style>.ajax-btn{display: none !important}</style>';
+	}
+
+
 
 	wp_reset_postdata();
 
