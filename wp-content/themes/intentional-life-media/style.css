@@ -12096,6 +12096,8 @@ section.post.slide-width .swiper-slide {
       .post-podcasts .post-grid:hover .post-content, .post-podcasts .post-grid:active .post-content, .post-podcasts .post-grid:focus .post-content {
         height: var(--height, 228.38px) !important; }
         .post-podcasts .post-grid:hover .post-content .desc-box, .post-podcasts .post-grid:active .post-content .desc-box, .post-podcasts .post-grid:focus .post-content .desc-box {
+          opacity: 1; }
+        .post-podcasts .post-grid:hover .post-content .button-readmore, .post-podcasts .post-grid:active .post-content .button-readmore, .post-podcasts .post-grid:focus .post-content .button-readmore {
           opacity: 1; } }
 
 .post-testimonials {
