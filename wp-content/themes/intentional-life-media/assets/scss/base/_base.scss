@@ -220,12 +220,35 @@ section {
         border-radius: 50%;
         background-color: var(--tangerine);
         margin: 0;
+        transition: 300ms;
         @include after {
             font-size: 18px;
             font-weight: bold;
+            transition: 300ms;
         }
         @include not-last-child {
             margin-right: 8px;
+        }
+        @include on-event {
+            background-color: var(--forest-gray);
+            border-color: var(--forest-gray);
+            @include after {
+                color: var(--white);
+            }
+        }
+    }
+}
+
+.bg-forest-gray {
+    .swiper-nav-holder.swiper-nav-holder {
+        > div {
+            @include on-event {
+                background-color: var(--white);
+                border-color: var(--white);
+                @include after {
+                    color: var(--forest-gray);
+                }
+            }
         }
     }
 }

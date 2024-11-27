@@ -11104,12 +11104,25 @@ textarea {
     width: var(--swiper-navigation-size);
     border-radius: 50%;
     background-color: var(--tangerine);
-    margin: 0; }
+    margin: 0;
+    transition: 300ms; }
     .swiper-nav-holder.swiper-nav-holder > div:after {
       font-size: 18px;
-      font-weight: bold; }
+      font-weight: bold;
+      transition: 300ms; }
     .swiper-nav-holder.swiper-nav-holder > div:not(:last-child) {
       margin-right: 8px; }
+    .swiper-nav-holder.swiper-nav-holder > div:hover, .swiper-nav-holder.swiper-nav-holder > div:active, .swiper-nav-holder.swiper-nav-holder > div:focus {
+      background-color: var(--forest-gray);
+      border-color: var(--forest-gray); }
+      .swiper-nav-holder.swiper-nav-holder > div:hover:after, .swiper-nav-holder.swiper-nav-holder > div:active:after, .swiper-nav-holder.swiper-nav-holder > div:focus:after {
+        color: var(--white); }
+
+.bg-forest-gray .swiper-nav-holder.swiper-nav-holder > div:hover, .bg-forest-gray .swiper-nav-holder.swiper-nav-holder > div:active, .bg-forest-gray .swiper-nav-holder.swiper-nav-holder > div:focus {
+  background-color: var(--white);
+  border-color: var(--white); }
+  .bg-forest-gray .swiper-nav-holder.swiper-nav-holder > div:hover:after, .bg-forest-gray .swiper-nav-holder.swiper-nav-holder > div:active:after, .bg-forest-gray .swiper-nav-holder.swiper-nav-holder > div:focus:after {
+    color: var(--forest-gray); }
 
 .swiper-pagination.swiper-pagination {
   position: static;
