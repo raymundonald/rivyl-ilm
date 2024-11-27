@@ -11939,6 +11939,15 @@ section.post.slide-width .swiper-slide {
     -ms-transition: 500ms;
     -o-transition: 500ms;
     transition: 500ms; }
+    .post-grid .post-content .heading {
+      -webkit-transition: 500ms;
+      -moz-transition: 500ms;
+      -ms-transition: 500ms;
+      -o-transition: 500ms;
+      transition: 500ms; }
+    .post-grid .post-content > * {
+      position: relative;
+      z-index: 1; }
     .post-grid .post-content a {
       color: var(--forest-gray); }
     @media screen and (max-width: 991px) {
@@ -11954,6 +11963,8 @@ section.post.slide-width .swiper-slide {
         left: 0;
         right: 0;
         top: auto; } }
+  .post-grid:hover .post-content, .post-grid:active .post-content, .post-grid:focus .post-content {
+    background-color: var(--tangerine); }
 
 .post-post .post-grid,
 .post-podcasts .post-grid {
@@ -11972,6 +11983,17 @@ section.post.slide-width .swiper-slide {
     @media (min-width: 768px) {
       .post-post .post-grid .desc-box,
       .post-podcasts .post-grid .desc-box {
+        opacity: 0; } }
+  .post-post .post-grid .button-readmore,
+  .post-podcasts .post-grid .button-readmore {
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -ms-transition: 500ms;
+    -o-transition: 500ms;
+    transition: 500ms; }
+    @media (min-width: 768px) {
+      .post-post .post-grid .button-readmore,
+      .post-podcasts .post-grid .button-readmore {
         opacity: 0; } }
 
 .post-post .post-grid .image-box {
@@ -12011,6 +12033,8 @@ section.post.slide-width .swiper-slide {
 .post-post .post-grid:hover .post-content, .post-post .post-grid:active .post-content, .post-post .post-grid:focus .post-content {
   top: 140px; }
   .post-post .post-grid:hover .post-content .desc-box, .post-post .post-grid:active .post-content .desc-box, .post-post .post-grid:focus .post-content .desc-box {
+    opacity: 1; }
+  .post-post .post-grid:hover .post-content .button-readmore, .post-post .post-grid:active .post-content .button-readmore, .post-post .post-grid:focus .post-content .button-readmore {
     opacity: 1; }
 @media (min-width: 768px) {
   .post-post .post-grid {
@@ -12168,6 +12192,11 @@ section.accordion-section .accordion.accordion.accordion {
       padding: 24px;
       line-height: 1;
       background-color: var(--seafoam);
+      -webkit-transition: 500ms;
+      -moz-transition: 500ms;
+      -ms-transition: 500ms;
+      -o-transition: 500ms;
+      transition: 500ms;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none; }
@@ -12176,7 +12205,12 @@ section.accordion-section .accordion.accordion.accordion {
         font-size: 18px;
         font-weight: bold;
         font-style: italic;
-        font-family: var(--secondary-font); }
+        font-family: var(--secondary-font);
+        -webkit-transition: 500ms;
+        -moz-transition: 500ms;
+        -ms-transition: 500ms;
+        -o-transition: 500ms;
+        transition: 500ms; }
       section.accordion-section .accordion.accordion.accordion .accordion-item .accordion-header .accordion-button[aria-expanded="true"] {
         background-color: var(--white); }
         section.accordion-section .accordion.accordion.accordion .accordion-item .accordion-header .accordion-button[aria-expanded="true"] .plus-minus {
@@ -12188,9 +12222,21 @@ section.accordion-section .accordion.accordion.accordion {
     section.accordion-section .accordion.accordion.accordion .accordion-item .accordion-collapse .desc-box {
       padding-left: 24px;
       padding-bottom: 24px;
-      padding-right: 24px; }
+      padding-right: 24px;
+      -webkit-transition: 500ms;
+      -moz-transition: 500ms;
+      -ms-transition: 500ms;
+      -o-transition: 500ms;
+      transition: 500ms; }
     section.accordion-section .accordion.accordion.accordion .accordion-item:not(:last-child) {
       margin-bottom: 20px; }
+    section.accordion-section .accordion.accordion.accordion .accordion-item:hover .accordion-header .accordion-button {
+      background-color: var(--forest-gray); }
+      section.accordion-section .accordion.accordion.accordion .accordion-item:hover .accordion-header .accordion-button span {
+        color: var(--white); }
+    section.accordion-section .accordion.accordion.accordion .accordion-item:hover .accordion-collapse .desc-box {
+      color: var(--white);
+      background-color: var(--forest-gray); }
 
 section.newsletter {
   --size-x: 80px;

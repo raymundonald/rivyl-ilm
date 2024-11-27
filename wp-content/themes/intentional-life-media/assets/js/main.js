@@ -2,6 +2,7 @@ jQuery(document).ready(function () {
     swiper_sliders();
     modals();
     header_menu();
+    ajax_trigger();
 });
 function modals() {
     jQuery('.listen-modal').click(function (e) {
@@ -90,8 +91,49 @@ function swiper_sliders() {
         });
 
     }, 100);
+}
+
+function post_ajax() {
+    $archive_section = jQuery('.ajax-loading');
+    $result_holder = jQuery('#results .row');
+    $archive_section.addClass('loading-post');
+
+    $post_type = jQuery('input[name="post_type"]').val();
+    $posts_per_page = jQuery('input[name="posts_per_page"]').val();
+    $current_post = jQuery('input[name="current_post"]').val();
+
+    var $excludes_ids = { 0: $current_post };
+    jQuery('#results .post-item').each(function (index, element) {
+        $post_id = jQuery(this).attr('post_id');
+        $excludes_ids[index + 1] = $post_id;
+    });
 
 
+    jQuery.ajax({
+        type: "POST",
+        url: ajax_object.ajax_url,
 
+        data: {
+            action: 'post_ajax',
+            post_type: $post_type,
+            posts_per_page: $posts_per_page,
+            excludes_ids: $excludes_ids
+        },
 
+        success: function (response) {
+            jQuery(response).appendTo($result_holder);
+            $archive_section.removeClass('loading-post');
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+
+}
+
+function ajax_trigger() {
+    jQuery('#load-more-team').click(function (e) {
+        post_ajax();
+        e.preventDefault();
+    });
 }

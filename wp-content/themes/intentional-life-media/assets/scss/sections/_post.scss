@@ -104,6 +104,13 @@ section.post {
     .post-content {
         padding: 40px;
         color: var(--forest-gray);
+        .heading {
+            @include transition(500ms);
+        }
+        > * {
+            position: relative;
+            z-index: 1;
+        }
         @include transition(500ms);
         a {
             color: var(--forest-gray);
@@ -122,6 +129,11 @@ section.post {
             top: auto;
         }
     }
+    @include on-event {
+        .post-content {
+            background-color: var(--tangerine);
+        }
+    }
 }
 .post-post,
 .post-podcasts {
@@ -132,6 +144,12 @@ section.post {
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
+            @include transition(500ms);
+            @include responsive(sm-lg) {
+                opacity: 0;
+            }
+        }
+        .button-readmore {
             @include transition(500ms);
             @include responsive(sm-lg) {
                 opacity: 0;
@@ -180,6 +198,9 @@ section.post {
             .post-content {
                 top: 140px;
                 .desc-box {
+                    opacity: 1;
+                }
+                .button-readmore {
                     opacity: 1;
                 }
             }

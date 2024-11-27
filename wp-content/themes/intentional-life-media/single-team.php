@@ -30,7 +30,10 @@ $posts = get_posts(array(
     'orderby' => 'rand'
 ));
 ?>
-<section class="post-team md-padding-top lg-padding-bottom">
+<section class="post-team md-padding-top lg-padding-bottom ajax-loading">
+    <input type="hidden" name="post_type" value="team">
+    <input type="hidden" name="posts_per_page" value="4">
+    <input type="hidden" name="current_post" value="<?php the_ID() ?>">
     <div class="container">
         <div class="heading-description position-relative content-margin md-margin-bottom  text-center">
             <h1>MEET THE TEAM</h1>
@@ -38,20 +41,22 @@ $posts = get_posts(array(
                 <p>Joyful kinship is at the heart of what we do.</p>
             </div>
         </div>
-        <div class="row">
-            <?php
-            foreach ($posts as $post) {
-                echo "<div class='col-lg-3 col-md-6'>";
-                echo _team_grid(array(
-                    'id' => $post->ID,
-                    'post_title' => $post->post_title,
-                    'post_excerpt' => $post->post_excerpt
-                ));
-                echo "</div>";
-            }
-            ?>
+        <div id="results">
+            <div class="row">
+                <?php
+                foreach ($posts as $post) {
+                    echo "<div class='col-lg-3 col-md-6 post-item' post_id='$post->ID'>";
+                    echo _team_grid(array(
+                        'id' => $post->ID,
+                        'post_title' => $post->post_title,
+                        'post_excerpt' => $post->post_excerpt
+                    ));
+                    echo "</div>";
+                }
+                ?>
+            </div>
         </div>
-        <div class="button-tangerine col-auto button-box text-center md-margin-top"><a href="/team" target="_self">More</a></div>
+        <div class="button-tangerine col-auto button-box text-center md-margin-top"><a href="#" id="load-more-team">More</a></div>
     </div>
 </section>
 
