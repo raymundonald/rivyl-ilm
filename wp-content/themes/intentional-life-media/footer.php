@@ -13,10 +13,10 @@ if (is_single()) {
         <div class="accordion accordionFooter" id="accordionFooter">
             <div class="footer-top xs-margin-bottom">
                 <div class="row g-4">
-                    <div class="col-12 col-lg-4">
+                    <div class="col-12 col-lg-3">
                         <?php dynamic_sidebar('footer_column_1') ?>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-3">
                         <?php dynamic_sidebar('footer_column_2') ?>
                     </div>
                     <div class="col-12 col-md d-none">
