@@ -10,3 +10,20 @@
         position: relative;
     }
 }
+.bg-torquoise {
+    .wpcf7-submit.wpcf7-submit.wpcf7-submit {
+        @include on-event {
+            background-color: var(--tangerine);
+            border-color: var(--tangerine);
+            color: var(--forest-gray);
+        }
+    }
+}
+.bg-forest-gray {
+    .wpcf7-submit.wpcf7-submit.wpcf7-submit {
+        @include on-event {
+            background-color: var(--torquoise);
+            border-color: var(--torquoise);
+        }
+    }
+}

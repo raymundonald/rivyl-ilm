@@ -10985,6 +10985,11 @@ a {
 section:not(.hero):not(.has-background) .button-box.button-box.button-tangerine a:hover, section:not(.hero):not(.has-background) .button-box.button-box.button-tangerine a:active, section:not(.hero):not(.has-background) .button-box.button-box.button-tangerine a:focus, section:not(.hero):not(.has-background) .button-box.button-box.button-tangerine button:hover, section:not(.hero):not(.has-background) .button-box.button-box.button-tangerine button:active, section:not(.hero):not(.has-background) .button-box.button-box.button-tangerine button:focus {
   border-color: var(--tangerine); }
 
+.bg-light-gray.bg-light-gray .button-tangerine.button-tangerine.button-tangerine a:hover, .bg-light-gray.bg-light-gray .button-tangerine.button-tangerine.button-tangerine a:active, .bg-light-gray.bg-light-gray .button-tangerine.button-tangerine.button-tangerine a:focus {
+  background-color: var(--forest-gray);
+  border-color: var(--forest-gray);
+  color: var(--white); }
+
 .wpcf7-submit.wpcf7-submit.wpcf7-submit {
   background-color: var(--forest-gray);
   border: 1px solid;
@@ -11393,6 +11398,15 @@ section.bg-forest-gray .swiper-pagination.swiper-pagination .swiper-pagination-b
 .wpcf7 p {
   position: relative; }
 
+.bg-torquoise .wpcf7-submit.wpcf7-submit.wpcf7-submit:hover, .bg-torquoise .wpcf7-submit.wpcf7-submit.wpcf7-submit:active, .bg-torquoise .wpcf7-submit.wpcf7-submit.wpcf7-submit:focus {
+  background-color: var(--tangerine);
+  border-color: var(--tangerine);
+  color: var(--forest-gray); }
+
+.bg-forest-gray .wpcf7-submit.wpcf7-submit.wpcf7-submit:hover, .bg-forest-gray .wpcf7-submit.wpcf7-submit.wpcf7-submit:active, .bg-forest-gray .wpcf7-submit.wpcf7-submit.wpcf7-submit:focus {
+  background-color: var(--torquoise);
+  border-color: var(--torquoise); }
+
 /*-----------------------------------------------------------------------------------*/
 /* Sections,  Header & Footer
 /*-----------------------------------------------------------------------------------*/
@@ -11462,6 +11476,10 @@ header {
           top: -8px; }
         header .menu-burger .icon .menu:after {
           top: 8px; }
+    header .menu-burger:hover .icon .menu,
+    header .menu-burger:hover .icon .menu::before,
+    header .menu-burger:hover .icon .menu::after {
+      color: var(--torquoise); }
 
 body.mobile-menu-active header .menu-burger .icon .menu {
   background: transparent; }

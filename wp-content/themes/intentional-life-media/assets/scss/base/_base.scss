@@ -100,13 +100,24 @@ section:not(.hero):not(.has-background) {
     }
 }
 
+.bg-light-gray.bg-light-gray {
+    .button-tangerine.button-tangerine.button-tangerine {
+        a {
+            @include on-event {
+                background-color: var(--forest-gray);
+                border-color: var(--forest-gray);
+                color: var(--white);
+            }
+        }
+    }
+}
+
 .wpcf7-submit.wpcf7-submit.wpcf7-submit {
     background-color: var(--forest-gray);
     @include button-style;
     border-color: var(--forest-gray);
     color: var(--white);
 }
-
 
 .decor {
     display: flex;

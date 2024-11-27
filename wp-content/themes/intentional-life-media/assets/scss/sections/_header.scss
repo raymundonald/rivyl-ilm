@@ -85,6 +85,13 @@ header {
                 }
             }
         }
+        &:hover {
+            .icon .menu,
+            .icon .menu::before,
+            .icon .menu::after {
+                color: var(--torquoise);
+            }
+        }
     }
 }
 
