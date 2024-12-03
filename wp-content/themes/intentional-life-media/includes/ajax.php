@@ -20,7 +20,7 @@ function post_ajax()
 			$the_query->the_post();
 			$post_id = get_the_ID();
 			if ($post_type == 'team') {
-				echo "<div class='col-lg-3 col-md-6 post-item' $count post_id='$post_id'>";
+				echo "<div class='col-lg-3 col-md-6 post-item post-ajax post-hidden' $count post_id='$post_id'>";
 				echo _team_grid(array(
 					'id' => $post_id,
 					'post_title' => get_the_title(),

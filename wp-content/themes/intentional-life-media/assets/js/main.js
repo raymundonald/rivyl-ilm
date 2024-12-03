@@ -122,6 +122,10 @@ function post_ajax() {
 
         success: function (response) {
             jQuery(response).appendTo($result_holder);
+            setTimeout(function () {
+                jQuery('.post-hidden').removeClass('post-hidden');
+            }, 10);
+
             $archive_section.removeClass('loading-post');
         },
         error: function (e) {
