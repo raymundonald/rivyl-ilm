@@ -141,7 +141,7 @@ function __grid($section)
 {
     $grids = $section['grids'];
 
-    if ($section['grid_style'] == 'style-1') {
+    if ($section['post_box_style'] == 'style-1') {
         $grid_container_class[] = 'text-style-bordered-left-parent';
     }
 
@@ -182,7 +182,6 @@ function __grid($section)
 
 function __post($section, $args = [], $settings = [])
 {
-
     $post_type = $section['post_type'][0]['_type'];
     $source = $section['post_type'][0]['source'];
     $post = $section['post_type'][0]['post'];
@@ -190,9 +189,7 @@ function __post($section, $args = [], $settings = [])
     $terms = $section['post_type'][0]['terms'];
     $icon_position = $section['icon_position'];
     $heading_line = isset($section['heading_line']) ? $section['heading_line'] : false;
-
     $args['post_type'] = $post_type;
-
 
     if ($source == 'most-recent') {
         $args['order'] = 'DESC';
@@ -222,7 +219,11 @@ function __post($section, $args = [], $settings = [])
 
     $settings['is_slider'] = isset($section['is_slider']) ? $section['is_slider'] : false;
 
-    $settings['pagination'] = true;
+    $settings['pagination'] =  isset($section['hide_pagination']) ? false : true;;
+
+    if ($post_type == 'albums') {
+        $settings['post_box_style'] = 'post_box_style_1';
+    }
 
     if ($post_type == 'faqs') {
         $settings['navigation'] = false;
@@ -253,6 +254,9 @@ function __post($section, $args = [], $settings = [])
     $html .= "</div>";
     $html .= "</div>";
 
+    if (isset($section['posts_slider_heading'])) {
+        $html .= '<div class="container"> <h3 class="heading text-torquoise mb-3">' . $section['posts_slider_heading'] . '</h3> </div>';
+    }
 
     $html .= _post_query($args, $settings);
 
@@ -265,6 +269,7 @@ function __post($section, $args = [], $settings = [])
 
     return $html;
 }
+
 
 function __accordion($section, $section_id)
 {

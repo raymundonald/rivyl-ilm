@@ -48,7 +48,7 @@ class UDP_Google_IO_Stream extends UDP_Google_IO_Abstract
       $error = 'The stream IO handler requires the allow_url_fopen runtime ' .
                'configuration to be enabled';
       $client->getLogger()->critical($error);
-      throw new UDP_Google_IO_Exception($error);
+      throw new UDP_Google_IO_Exception($error); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
     }
 
     parent::__construct($client);
@@ -176,7 +176,7 @@ if (!empty($this->options['cafile'])) $requestSslContext['cafile'] = $this->opti
       );
 
       $this->client->getLogger()->error('Stream ' . $error);
-      throw new UDP_Google_IO_Exception($error, $this->trappedErrorNumber);
+      throw new UDP_Google_IO_Exception($error, $this->trappedErrorNumber); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
     }
 
     $response_data = false;
@@ -199,7 +199,7 @@ if (!empty($this->options['cafile'])) $requestSslContext['cafile'] = $this->opti
       );
 
       $this->client->getLogger()->error('Stream ' . $error);
-      throw new UDP_Google_IO_Exception($error, $respHttpCode);
+      throw new UDP_Google_IO_Exception($error, $respHttpCode); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
     }
 
     $responseHeaders = $this->getHttpResponseHeaders($http_response_header);

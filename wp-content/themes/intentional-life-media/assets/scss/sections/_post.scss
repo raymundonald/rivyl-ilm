@@ -402,10 +402,208 @@ section.blog-content {
     }
 }
 
+.post-box-style-1-grid {
+    background-color: var(--white);
+    overflow: hidden;
+    position: relative;
+    font-family: var(--secondary-font);
+    .post-content {
+        padding: 10px;
+        .heading {
+            font-size: 18px;
+            text-transform: initial;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+    }
+    .author,
+    .year {
+        font-size: 14px;
+    }
+}
+
+.post-box-style-3-grid {
+    max-width: 205px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slider-section {
+    .container > .text-label-style-1 {
+        padding-left: 20px;
+    }
+    .swiper-slide {
+        width: var(--width, 252px);
+    }
+}
+
+.swiper-post-slider-style-2 {
+    .swiper-pagination {
+        @include responsive(sm-lg) {
+            display: none;
+        }
+    }
+    .swiper-wrapper {
+        padding-left: 20px;
+    }
+}
+
 .post-ajax {
     @include transition(400ms);
     &.post-hidden {
         opacity: 0;
         @include transform(translateY(20px));
+    }
+}
+
+.video-player {
+    padding: var(--padding, 93% 0);
+    font-family: var(--secondary-font);
+    cursor: pointer;
+    .video-box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .play-button {
+        left: 50%;
+        top: 50%;
+        width: 53px;
+        height: 53px;
+        transition: 300ms;
+        @include transform(translate(-50%, -50%));
+        svg {
+            width: 53px;
+            height: 53px;
+            color: var(--white);
+        }
+    }
+
+    .story-details {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        .heading {
+            font-style: italic;
+            text-transform: initial;
+        }
+        .username {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+    &:hover {
+        .play-button {
+            opacity: 0;
+        }
+    }
+}
+
+.post-box-style-4-grid {
+    .post-content {
+        padding: 20px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        @include before {
+            @include transition(400ms);
+            content: "";
+            background-color: var(--forest-gray);
+            opacity: 0.2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+    @include on-event {
+        .post-content {
+            @include before {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.video-player-style-2 {
+    --padding: 0;
+    --bs-border-radius: 0;
+
+    .story-details {
+        position: static !important;
+        color: var(--forest-gray) !important;
+        padding: 10px;
+    }
+    .title {
+        color: var(--forest-gray) !important;
+    }
+    .video-box {
+        padding: 28.5% 0;
+        position: relative !important;
+    }
+    .video-player {
+        background-color: var(--light-gray);
+        text-decoration: none;
+    }
+    .video-holder {
+        position: relative !important;
+    }
+}
+
+.video-player-style-3 {
+    --padding: 36%;
+}
+
+.post-box-style-1-grid-style-2 {
+    --padding: 57% 0;
+    .post-content {
+        background-color: var(--light-gray);
+    }
+}
+
+.post-box-style-1-grid-avatar {
+    .image-style {
+        img {
+            width: 131px;
+            height: 131px;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%));
+            border-radius: 50%;
+        }
+    }
+}
+
+.single-stories,
+.single-music {
+    section.hero .hero-image:before {
+        display: none !important;
+    }
+}
+
+.stories-feed {
+    max-width: 492px;
+    margin-left: auto;
+    margin-right: auto;s
+    padding-bottom: 200px;
+    overflow: hidden;
+    .swiper {
+        overflow: visible;
+    }
+    .swiper-wrapper {
+        .swiper-slide {
+            height: var(--height) !important;
+        }
     }
 }

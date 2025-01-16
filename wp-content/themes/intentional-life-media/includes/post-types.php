@@ -335,6 +335,7 @@ $Radio->has_archive = true;
 $Radio->show_in_rest = true;
 
 
+
 $Radio_Category = new newTaxonomy();
 $Radio_Category->taxonomy = 'podcast_category';
 $Radio_Category->post_type = 'podcasts';
@@ -356,8 +357,7 @@ $Radio_Category->args = array(
         'add_or_remove_items'        => __('Add or remove items', 'text_domain'),
         'choose_from_most_used'      => __('Choose from the most used', 'text_domain'),
         'popular_items'              => __('Popular Items', 'text_domain'),
-        'search_items'               => __('Search Items', 'text_domain'),
-        'not_found'                  => __('Not Found', 'text_domain'),
+        'search_items'               => __('Search Items', 'text_domain'),        'not_found'                  => __('Not Found', 'text_domain'),
         'no_terms'                   => __('No items', 'text_domain'),
         'items_list'                 => __('Items list', 'text_domain'),
         'items_list_navigation'      => __('Items list navigation', 'text_domain'),
@@ -371,3 +371,93 @@ $Radio_Category->args = array(
         'slug'         => 'podcasts-category',
     )
 );
+
+
+$Music = new newPostType();
+$Music->name = 'Music';
+$Music->singular_name = 'Music';
+$Music->icon = 'dashicons-layout';
+$Music->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Music->exclude_from_search = false;
+$Music->publicly_queryable = true;
+$Music->show_in_admin_bar = true;
+$Music->has_archive = true;
+$Music->show_in_rest = true;
+
+$Albums = new newPostType();
+$Albums->name = 'Albums';
+$Albums->singular_name = 'Album';
+$Albums->icon = 'dashicons-layout';
+$Albums->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Albums->exclude_from_search = false;
+$Albums->publicly_queryable = true;
+$Albums->show_in_admin_bar = true;
+$Albums->has_archive = true;
+$Albums->show_in_rest = true;
+
+
+$Playlists = new newPostType();
+$Playlists->name = 'Playlists';
+$Playlists->singular_name = 'Playlist';
+$Playlists->icon = 'dashicons-layout';
+$Playlists->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Playlists->exclude_from_search = false;
+$Playlists->publicly_queryable = true;
+$Playlists->show_in_admin_bar = true;
+$Playlists->has_archive = true;
+$Playlists->show_in_rest = true;
+
+$Livestreams = new newPostType();
+$Livestreams->name = 'Livestreams';
+$Livestreams->singular_name = 'Livestream';
+$Livestreams->icon = 'dashicons-layout';
+$Livestreams->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Livestreams->exclude_from_search = false;
+$Livestreams->publicly_queryable = true;
+$Livestreams->show_in_admin_bar = true;
+$Livestreams->has_archive = true;
+$Livestreams->show_in_rest = true;
+
+$Videos = new newPostType();
+$Videos->name = 'Videos';
+$Videos->singular_name = 'Video';
+$Videos->icon = 'dashicons-layout';
+$Videos->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Videos->exclude_from_search = false;
+$Videos->publicly_queryable = true;
+$Videos->show_in_admin_bar = true;
+$Videos->has_archive = true;
+$Videos->show_in_rest = true;
+
+$Stories = new newPostType();
+$Stories->name = 'Stories';
+$Stories->singular_name = 'Story';
+$Stories->icon = 'dashicons-layout';
+$Stories->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Stories->exclude_from_search = false;
+$Stories->publicly_queryable = true;
+$Stories->show_in_admin_bar = true;
+$Stories->has_archive = true;
+$Stories->show_in_rest = true;
+
+$On_Demand = new newPostType();
+$On_Demand->name = 'On-Demand';
+$On_Demand->singular_name = 'On-Demand';
+$On_Demand->icon = 'dashicons-layout';
+$On_Demand->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$On_Demand->exclude_from_search = false;
+$On_Demand->publicly_queryable = true;
+$On_Demand->show_in_admin_bar = true;
+$On_Demand->has_archive = true;
+$On_Demand->show_in_rest = true;
+
+$Evangelistic = new newPostType();
+$Evangelistic->name = 'Evangelistic';
+$Evangelistic->singular_name = 'Evangelistic';
+$Evangelistic->icon = 'dashicons-layout';
+$Evangelistic->supports = array('title', 'revisions', 'page-attributes', 'editor', 'thumbnail', 'excerpt', 'author');
+$Evangelistic->exclude_from_search = false;
+$Evangelistic->publicly_queryable = true;
+$Evangelistic->show_in_admin_bar = true;
+$Evangelistic->has_archive = true;
+$Evangelistic->show_in_rest = true;

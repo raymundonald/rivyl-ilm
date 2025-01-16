@@ -1,3 +1,6 @@
+body {
+    --bs-border-radius: 10px;
+}
 #wpadminbar {
     @include responsive(xs-sm) {
         display: none;
@@ -201,6 +204,14 @@ section {
         height: 100%;
         object-fit: cover;
     }
+    &.has-bg-color {
+        background-color: var(--bg-color);
+    }
+}
+
+.image-rounded {
+    border-radius: 50%;
+    overflow: hidden
 }
 
 .image-box {
@@ -552,6 +563,38 @@ section {
     &[aria-expanded="true"] {
         @include after {
             @include transform(rotate(-180deg));
+        }
+    }
+}
+
+.content-filter-box {
+    gap: 15px;
+    button {
+        border-radius: 5px;
+        border: 1px solid var(--forest-gray);
+        background-color: var(--bs-white);
+        padding: 4px 15px;
+        &.filter-button-active {
+            background-color: var(--tangerine);
+            border-color: var(--tangerine);
+        }
+        @include on-event {
+            background-color: var(--tangerine);
+            border-color: var(--tangerine);
+        }
+    }
+}
+
+.image-zoom-on-hover {
+    .image-box {
+        overflow: hidden;
+    }
+    img:not(.avatar)  {
+        @include transition(400ms);
+    }
+    @include on-event {
+        img:not(.avatar) {
+            transform: scale(1.1);
         }
     }
 }

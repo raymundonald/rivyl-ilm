@@ -3,7 +3,7 @@
 ?>
 <div class="expertmode">
 	<p>
-		<em><?php _e('Unless you have a problem, you can completely ignore everything here.', 'updraftplus');?></em>
+		<em><?php esc_html_e('Unless you have a problem, you can completely ignore everything here.', 'updraftplus');?></em>
 	</p>
 	<div class="advanced_settings_container">
 		<div class="advanced_settings_menu">

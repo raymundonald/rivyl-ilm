@@ -307,7 +307,7 @@ abstract class UpdraftPlus_RemoteSend {
 			if (!is_array($remotesites)) $remotesites = array();
 
 			if (empty($remotesites[$site_id]) || empty($remotesites[$site_id]['url']) || empty($remotesites[$site_id]['key']) || empty($remotesites[$site_id]['name_indicator'])) {
-				throw new Exception("Remote site id ($site_id) not found - send aborted");
+				throw new Exception("Remote site id ($site_id) not found - send aborted"); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error messages should be escaped when caught and printed.
 			}
 
 			array_push($initial_jobdata, 'remotesend_info', $remotesites[$site_id]);

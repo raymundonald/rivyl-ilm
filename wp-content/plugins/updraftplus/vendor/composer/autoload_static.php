@@ -49,6 +49,10 @@ class ComposerStaticInit31d9c6e64cdb60e7e826f7f09bc8194b
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'B' => 
+        array (
+            'Brumann\\Polyfill\\' => 17,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -103,6 +107,10 @@ class ComposerStaticInit31d9c6e64cdb60e7e826f7f09bc8194b
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Brumann\\Polyfill\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brumann/polyfill-unserialize/src',
         ),
     );
 

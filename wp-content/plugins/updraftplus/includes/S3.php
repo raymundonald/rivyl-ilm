@@ -288,12 +288,12 @@ class UpdraftPlus_S3 {
 
 
 	/**
-	 * Free signing key from memory, MUST be called if you are using setSigningKey()
+	 * Free signing key from memory, MUST be called on older PHP versions if you are using setSigningKey()
 	 *
 	 * @return void
 	 */
 	public function freeSigningKey() {
-		if (false !== $this->__signingKeyResource) {
+		if (false !== $this->__signingKeyResource && (!defined('PHP_MAJOR_VERSION') || PHP_MAJOR_VERSION < 8)) { // @phpcs:ignore PHPCompatibility.Constants.NewConstants.php_major_versionFound
 			openssl_free_key($this->__signingKeyResource);
 		}
 	}
@@ -323,9 +323,9 @@ class UpdraftPlus_S3 {
 	 */
 	private function _triggerError($message, $file, $line, $code = 0) {
 		if ($this->useExceptions) {
-			throw new UpdraftPlus_S3Exception($message, $file, $line, $code);
+			throw new UpdraftPlus_S3Exception($message, $file, $line, $code); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- The escaping should happen when the exception is caught and printed
 		} else {
-			trigger_error($message, E_USER_WARNING);
+			trigger_error(esc_html($message), E_USER_WARNING);
 		}
 	}
 

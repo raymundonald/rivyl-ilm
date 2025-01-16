@@ -396,14 +396,14 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 	
 		if (function_exists('phpinfo')) phpinfo(INFO_ALL ^ (INFO_CREDITS | INFO_LICENSE));
 
-		echo '<h3 id="ud-debuginfo-constants">'.__('Constants', 'updraftplus').'</h3>';
+		echo '<h3 id="ud-debuginfo-constants">'.esc_html__('Constants', 'updraftplus').'</h3>';
 		$opts = @get_defined_constants();// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
 		ksort($opts);
 		echo '<table><thead></thead><tbody>';
 		foreach ($opts as $key => $opt) {
 			// Administrators can already read these in other ways, but we err on the side of caution
 			if (is_string($opt) && false !== stripos($opt, 'api_key')) $opt = '***';
-			echo '<tr><td>'.htmlspecialchars($key).'</td><td>'.htmlspecialchars(print_r($opt, true)).'</td>';
+			echo '<tr><td>'.esc_html($key).'</td><td>'.esc_html(print_r($opt, true)).'</td>';
 		}
 		echo '</tbody></table>';
 		

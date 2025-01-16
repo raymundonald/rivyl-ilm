@@ -3,7 +3,8 @@ $spacings: (
     "lg": 112px,
     "md": 80px,
     "sm": 64px,
-    "xs": 48px
+    "xs": 48px,
+    "xxs": 32px
 );
 
 $spacings_laptop: (
@@ -11,7 +12,8 @@ $spacings_laptop: (
     "lg": 80px,
     "md": 60px,
     "sm": 40px,
-    "xs": 30px
+    "xs": 30px,
+    "xxs": 24px
 );
 
 $spacings_tablet: (
@@ -19,7 +21,8 @@ $spacings_tablet: (
     "lg": 60px,
     "md": 40px,
     "sm": 30px,
-    "xs": 25px
+    "xs": 25px,
+    "xxs": 20px
 );
 
 $spacings_mobile: (
@@ -27,7 +30,8 @@ $spacings_mobile: (
     "lg": 60px,
     "md": 40px,
     "sm": 30px,
-    "xs": 25px
+    "xs": 25px,
+    "xxs": 20px
 );
 @include responsive(lg) {
     @each $size, $spacing in $spacings {
@@ -253,6 +257,10 @@ $spacings_mobile: (
     }
 }
 
+.text-initial {
+    text-transform: initial !important;
+}
+
 .lm-container,
 .rm-container {
     .container {
@@ -367,4 +375,29 @@ $spacings_mobile: (
     @include on-event {
         color: var(--white);
     }
+}
+
+.text-label-style-1 {
+    color: var(--torquoise);
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 800;
+}
+.text-label-style-2 {
+    color: var(--torquoise);
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.remove-padding-bottom.remove-padding-bottom {
+    padding-bottom: 0 !important;
+}
+
+.remove-padding-top.remove-padding-top {
+    padding-top: 0 !important;
+}
+
+.remove-box-border-radius {
+    --bs-border-radius: 0;
 }

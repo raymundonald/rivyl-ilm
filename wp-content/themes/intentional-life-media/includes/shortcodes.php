@@ -281,12 +281,7 @@ class Shortcodes
         $avatar = get_the_author_meta('avatar', $author_id);
         $name = get_the_author_meta('display_name', $author_id);
         $html = "<div class='author-box text-large fw-medium'>";
-        if ($avatar) {
-            $html .= "<img src='$avatar' width='140' height='140' class='avatar' alt='$name' />";
-        } else {
-            $SVG = new SVG;
-            $html .= $SVG->user();
-        }
+        $html .= get_avatar($author_id, 300);
         $html .= $name;
         $html .= "</div>";
 

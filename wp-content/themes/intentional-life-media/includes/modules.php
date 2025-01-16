@@ -11,7 +11,7 @@ function action_module_content()
         );
         $template = get_page_template_slug();
 
-        if ($template == 'templates/page-modules.php' || in_array(get_post_type(), $post_types)) {
+        if ($template == 'templates/page-modules.php' || $template == 'templates/page-library-of-hope.php' || in_array(get_post_type(), $post_types)) {
             $content_html = '<!-- wp:html -->';
             $content_html .= __sections(get_the_ID());
             $content_html .= '<!-- /wp:html -->';
@@ -114,6 +114,42 @@ function __hero($id)
     }
 }
 
+function __hero_default($hero_title, $hero_desc = false, $hero_image = false)
+{
+
+
+    $html = "<section class='hero position-relative d-flex align-items-end lg-padding-top hero-content-over-image hero-content-over-image-not-fh'>";
+    $html .= "<div class='hero-inner w-100'>";
+    if ($hero_image) {
+        $html .= "<div class='hero-image bg-image'>";
+        $html .= wp_get_attachment_image($hero_image, 'full');
+        $html .= "</div>";
+    }
+
+
+    $html .= "<div class='hero-content left-right-padding position-relative'>";
+    $html .= "<div class='container position-relative'>";
+
+
+    $html .= "<h1>$hero_title</h1>";
+
+    if ($hero_desc) {
+        $html .= "<div class='hero-desc'>";
+        $html .= wpautop($hero_desc);
+        $html .= "</div>";
+    }
+
+
+
+
+    $html .= "</div>";
+    $html .= "</div>";
+    $html .= "</div>";
+    $html .= "</section>";
+
+    return $html;
+}
+
 function __sections($id)
 {
     $sections = get__post_meta_by_id($id, 'sections');
@@ -143,7 +179,7 @@ function __sections($id)
                 $section_id = $custom_id;
                 $custom_id_val = "id='$section_id'";
             } else {
-                $section_id = "section-$type-$key";
+                $section_id = "section-$id-$type-$key";
                 $custom_id_val = "id='$section_id'";
             }
 
@@ -193,7 +229,6 @@ function __sections($id)
                         $section_html = false;
                     }
                     break;
-
                 case 'logo_slider':
                     $section_classes[] = 'logo-slider md-padding-top md-padding-bottom';
                     $section_html = ___logo_slider($section);
@@ -219,9 +254,9 @@ function __sections($id)
                     $grid_columns_desktop = $section['grid_columns_desktop'];
                     $grid_columns_tablet = $section['grid_columns_tablet'];
                     $grid_columns_mobile = $section['grid_columns_mobile'];
-                    $grid_style = $section['grid_style'];
-                    if ($grid_style) {
-                        $section_classes[] = $grid_style;
+                    $post_box_style = $section['post_box_style'];
+                    if ($post_box_style) {
+                        $section_classes[] = $post_box_style;
                     }
 
                     $inline_styles[] = "--grid-column-desktop: $grid_columns_desktop";
@@ -232,15 +267,13 @@ function __sections($id)
                     break;
                 case 'post':
                     $post_type = $section['post_type'][0]['_type'];
-
                     $slide_view_type = isset($section['slide_view_type']) ? $section['slide_view_type'] : '';
 
                     if ($slide_view_type == 'slide-width') {
                         $section_classes[] = 'slide-width';
-
                         $slides_width_wide = $section['slides_width_wide'] ? $section['slides_width_wide'] : '390px';
                         $slides_width_desktop = $section['slides_width_desktop'] ? $section['slides_width_desktop'] : '370px';
-                        $slides_width_tablet_landscape = $section['slides_width_tablet_landscape']? $section['slides_width_tablet_landscape'] : '350px';
+                        $slides_width_tablet_landscape = $section['slides_width_tablet_landscape'] ? $section['slides_width_tablet_landscape'] : '350px';
                         $slides_width_tablet_portrait = $section['slides_width_tablet_portrait'] ? $section['slides_width_tablet_portrait'] : '300px';
                         $slides_width_mobile = $section['slides_width_mobile'] ? $section['slides_width_mobile'] : '275px';
 
@@ -256,9 +289,6 @@ function __sections($id)
                         $slides_per_view_tablet_portrait = $section['slides_per_view_tablet_portrait'] ? $section['slides_per_view_tablet_portrait'] : 1.95;
                         $slides_per_view_mobile = $section['slides_per_view_mobile'] ? $section['slides_per_view_mobile'] : 0.95;
                     }
-
-
-
                     $section_classes[] = "post lg-padding-top lg-padding-bottom left-right-padding post-$post_type";
                     $sections_val = serialize($section);
                     $section_html = "[post data='$sections_val']";
@@ -267,7 +297,6 @@ function __sections($id)
                     if ($section['is_slider']) {
                         if ($slide_view_type == 'slide-width') {
                             $scripts_val .= "
-
                             var $slider_id = new Swiper('#$section_id .swiper-post-slider', {
                                 spaceBetween: 20,
                                 slidesPerView: 'auto',
@@ -283,7 +312,6 @@ function __sections($id)
                         ";
                         } else {
                             $scripts_val .= "
-
                             var $slider_id = new Swiper('#$section_id .swiper-post-slider', {
                                 spaceBetween: 20,
                                 pagination: {
@@ -318,7 +346,6 @@ function __sections($id)
                     break;
                 case 'accordion':
                     $section_classes[] = 'accordion-section lg-padding-top lg-padding-bottom left-right-padding';
-
                     $section_html = __accordion($section, $section_id);
                     break;
                 case 'text_image_section':
@@ -565,58 +592,150 @@ function _accordion_module($data, $class = '')
     return $html;
 }
 
-function _post_query($args, $settings, $html = "<div class='post-grid-holder'>")
+function _post_query($args, $settings, $type = 'post', $html = "<div class='post-grid-holder'>")
 {
-    $posts = get_posts($args);
 
+    if ($type == 'user') {
+        $posts = get_users($args);
+    } else if ($type == 'terms') {
+        $posts = get_terms($args);
+    } else {
+        $posts = get_posts($args);
+    }
     $post_grid = array(
         'post',
         'podcasts'
     );
-
+    $container_class = isset($settings['container_class']) ? $settings['container_class'] : '';
+    $container_id = isset($settings['container_id']) ? $settings['container_id'] : '';
     if ($settings['is_slider'] == true) {
         if ($settings['pagination'] == true) {
             $html .= _swiper_pagination();
         }
-
-
-        $html .= "<div class='carousel-container'>";
+        $html .= "<div class='carousel-container $container_class' id='$container_id'>";
         $html .= "<div class='container'>";
-
-        $parent_class = 'swiper swiper-post-slider';
+        $parent_class = "swiper swiper-post-slider";
         $item_class = 'swiper-slide';
     } else {
-        $html .= "<div class='container'>";
+        $html .= "<div class='container $container_class' id='$container_id'>";
         $parent_class = 'row';
-
         if ($args['post_type'] == 'testimonials') {
             $item_class = 'col-lg-4 col-md-6';
         } else if ($args['post_type'] == 'team') {
             $item_class = 'col-lg-3 col-md-6';
+        } else if ($args['post_type'] == 'any') {
+            $item_class = 'col-lg';
         }
     }
-
+    if (isset($settings['show_post_type_label']) && !is_bool($settings['show_post_type_label'])) {
+        $html .= "<div class='text-label-style-1 mb-2'>" . $settings['show_post_type_label'] . "</div>";
+    }
     $html .= "<div class='$parent_class'>";
     if ($settings['is_slider'] == true) {
         $html .= "<div class='swiper-wrapper'>";
     }
-    foreach ($posts as $post) {
-        $html .= "<div class='$item_class'>";
 
-        if (in_array($args['post_type'], $post_grid)) {
+    foreach ($posts as $post) {
+        $id = $post->ID;
+        $html .= "<div class='$item_class' id='post-$id'>";
+
+        if (isset($args['post_type']) && in_array($args['post_type'], $post_grid)) {
             $html .= _post_grid($post, $args['post_type']);
         } else {
-            if ($args['post_type'] == 'testimonials') {
+            if (isset($args['post_type']) && $args['post_type'] == 'testimonials') {
                 $html .= _testimonial_grid($post);
-            } else if ($args['post_type'] == 'team') {
+            } else if (isset($args['post_type']) && $args['post_type'] == 'team') {
                 $html .= _team_grid(array(
                     'id' => $post->ID,
                     'post_title' => $post->post_title,
                     'post_excerpt' => $post->post_excerpt,
                 ));
+            } else if (isset($args['post_type'])) {
+                $post_box_settings['type'] = 'post';
+                if ($args['post_type'] == 'albums' || $args['post_type'] == 'playlists') {
+                    $post_box_style = 'post_box_style_1';
+                } else if ($args['post_type'] == 'videos') {
+                    $post_box_style = 'video_player_box';
+                    $post_box_settings['show_year'] = true;
+                } else if ($args['post_type'] == 'livestreams') {
+                    $post_box_style = 'post_box_style_1';
+                    $post_box_settings['show_avatar_as_image'] = true;
+                    $post_box_settings['bg_color'] = get__post_meta_by_id($id, 'color');
+                } else if ($args['post_type'] == 'on-demand') {
+                    $post_box_style = 'video_player_box';
+                }
+                $html .= post_box_styles($type, $post, $post_box_style, $post_box_settings);
             }
         }
 
+        $html .= "</div>";
+    }
+    if ($settings['is_slider'] == true) {
+        $html .= "</div>";
+
+        $html .= "</div>";
+        $html .= "</div>";
+    } else {
+        $html .= "</div>";
+    }
+    $html .= "</div>";
+    if ($settings['navigation'] == true && $settings['is_slider'] == true) {
+        $html .= _swiper_navigation();
+    }
+    $html .= "</div>";
+    return $html;
+}
+
+function _post_query_v2($args, $settings, $html = "<div class='post-grid-holder'>")
+{
+    if (isset($settings['post_box_settings']['type'])) {
+        $type = $settings['post_box_settings']['type'];
+    } else {
+        $type = 'post';
+    }
+
+    if ($type == 'user') {
+        $posts = get_users($args);
+    } else if ($type == 'terms') {
+        $posts = get_terms($args);
+    } else {
+        $posts = get_posts($args);
+    }
+
+    $container_class = isset($settings['container_class']) ? $settings['container_class'] : '';
+    $container_id = isset($settings['container_id']) ? $settings['container_id'] : '';
+    if ($settings['is_slider'] == true) {
+        if ($settings['pagination'] == true) {
+            $html .= _swiper_pagination();
+        }
+        $html .= "<div class='carousel-container $container_class' id='$container_id'>";
+        $html .= "<div class='container'>";
+        $parent_class = "swiper swiper-post-slider";
+        $item_class = 'swiper-slide';
+    } else {
+        $html .= "<div class='container $container_class' id='$container_id'>";
+        $parent_class = 'row';
+        if ($args['post_type'] == 'testimonials') {
+            $item_class = 'col-lg-4 col-md-6';
+        } else if ($args['post_type'] == 'team') {
+            $item_class = 'col-lg-3 col-md-6';
+        } else if ($args['post_type'] == 'any') {
+            $item_class = 'col-lg';
+        }
+    }
+    if (isset($settings['post_box_settings']['show_post_type_label']) && !is_bool($settings['post_box_settings']['show_post_type_label'])) {
+        $html .= "<div class='text-label-style-1 mb-2'>" . $settings['post_box_settings']['show_post_type_label'] . "</div>";
+    }
+    $html .= "<div class='$parent_class'>";
+    if ($settings['is_slider'] == true) {
+        $html .= "<div class='swiper-wrapper'>";
+    }
+
+    foreach ($posts as $post) {
+        $id = $post->ID;
+        $html .= "<div class='$item_class' id='post-$id'>";
+
+        $html .= post_box_styles($type, $post, $settings['post_box_style'], isset($settings['post_box_settings']) ? $settings['post_box_settings'] : false);
 
 
         $html .= "</div>";
@@ -637,7 +756,283 @@ function _post_query($args, $settings, $html = "<div class='post-grid-holder'>")
     return $html;
 }
 
+function post_box_styles($type, $post, $post_box_style, $post_box_settings = false)
+{
+    $html = '';
+    if ($type == 'user') {
+        $post_data['link'] = get_author_posts_url($post->ID);
+        $post_data['title'] = $post->display_name;
+        $post_data['image'] = get_avatar($post->user_email, 300);
+    } else if ($type == 'terms') {
+        $post_data['id'] = $post->term_id;
+        $post_data['link'] = $post->term_id;
+        $post_data['title'] = $post->name;
+        $post_data['image'] = 559;
+    } else {
+        $post_data['post_type'] = $post->post_type;
+        $post_data['id'] = $post->ID;
+        $post_data['link'] = $post->ID;
+        $post_data['title'] = $post->post_title;
+        $post_data['desc'] = $post->post_excerpt;
+        if (isset($post_box_settings['show_avatar_as_image']) && $post_box_settings['show_avatar_as_image'] == true) {
+            $post_data['image'] = get_avatar($post->post_author, 300);
+        } else {
+            $post_data['image'] = get_post_thumbnail_id($post->ID, 'medium');
+        }
+        $post_data['meta_data'] = array(
+            'author' =>  get_the_author_meta('display_name', $post->post_author),
+            'year' => get_the_date('Y', $post->ID)
+        );
+    }
+    if ($post_box_style == 'post_box_style_1') {
+        $html .= _post_box_style_1($post_data, $post_box_settings);
+    } else if ($post_box_style == 'post_box_style_2') {
+        $html .= _post_box_style_2($post_data, $post_box_settings);
+    } else if ($post_box_style == 'post_box_style_3') {
+        $html .= _post_box_style_3($post_data, $post_box_settings);
+    } else if ($post_box_style == 'story_player_box') {
+        $html .= _story_player_box($post_data);
+    } else if ($post_box_style == 'video_player_box') {
+        $html .= _video_player_box($post_data, $post_box_settings);
+    } else if ($post_box_style == 'post_box_style_4') {
+        $html .= _post_box_style_4($post_data, $post_box_settings);
+    }
+    return $html;
+}
 
+function _post_box_style_1($post_data, $post_box_settings, $html = "")
+{
+    $style = '';
+    $class = '';
+    if (isset($post_box_settings['bg_color']) && $post_box_settings['bg_color']) {
+        $style = 'style="--bg-color: ' . $post_box_settings['bg_color'] . '"';
+        $class = 'has-bg-color';
+    }
+    $html .= "<div class='post-box-grid-holder'>";
+    if (isset($post_box_settings['show_post_type_label']) && $post_box_settings['show_post_type_label'] == true && isset($post_data['post_type'])) {
+        $post_type = $post_data['post_type'];
+        $html .= "<div class='text-label-style-1 mb-2'>$post_type</div>";
+    }
+    $html .= "<div class='post-box-style-1-grid rounded image-zoom-on-hover' $style>";
+
+    if (is_int($post_data['image'])) {
+        $html .= __icon_image(array(
+            'id' => $post_data['image'],
+            'size' => 'medium',
+            'class' => 'image-style ' . $class,
+            'link' => $post_data['link'],
+            'link_type' => $post_box_settings['type'],
+        ));
+    } else {
+        $html .= '<div class="image-box image-style ' . $class . '"><a class="text-inherit text-decoration-none" href="' . $post_data['link'] . '">' . $post_data['image'] . '</a></div>';
+    }
+    $html .= "<div class='post-content'>";
+    $html .= __heading(array(
+        'heading' => $post_data['title'],
+        'tag' => 'h3',
+        'class' => 'title',
+        'link' => $post_data['link'],
+        'link_type' => $post_box_settings['type'],
+    ));
+
+    if (isset($post_data['meta_data'])) {
+        foreach ($post_data['meta_data'] as $key => $meta_data) {
+            $html .= "<div class='$key'>$meta_data</div>";
+        }
+    }
+
+    $html .= "</div>";
+    $html .= "</div>";
+    $html .= "</div>";
+
+    return $html;
+}
+
+function _post_box_style_2($post_data, $post_box_settings)
+{
+    $html = "<div class='post-box-grid-holder' style='--width: 346px'>";
+
+    $html .= "<div class='post-box-style-2-grid text-center'>";
+
+    if (is_int($post_data['image'])) {
+        $html .= __icon_image(array(
+            'id' => $post_data['image'],
+            'size' => 'medium',
+            'link' => $post_data['link'],
+            'link_type' => $post_box_settings['type'],
+        ));
+    } else {
+        $html .= '<div class="image-box image-style"><a class="text-inherit text-decoration-none" href="' . $post_data['link'] . '">' . $post_data['image'] . '</a></div>';
+    }
+    $html .= "<div class='post-content'>";
+    $html .= __heading(array(
+        'heading' => $post_data['title'],
+        'tag' => 'h3',
+        'class' => 'title mt-3',
+        'link' => $post_data['link'],
+        'link_type' => $post_box_settings['type'],
+    ));
+
+
+    $html .= "</div>";
+
+    $html .= "</div>";
+    $html .= "</div>";
+
+    return $html;
+}
+
+function _post_box_style_3($post_data, $post_box_settings)
+{
+    $html = "<div class='post-box-grid-holder' style='--padding: 50%;'>";
+
+    $html .= "<div class='post-box-style-3-grid text-center'>";
+
+    if (is_int($post_data['image'])) {
+        $html .= __icon_image(array(
+            'id' => $post_data['image'],
+            'size' => 'medium',
+            'link' => $post_data['link'],
+            'class' => 'image-rounded',
+            'link_type' => $post_box_settings['type'],
+        ));
+    } else {
+        $html .= '<div class="image-box image-style image-rounded"><a class="text-inherit text-decoration-none" href="' . $post_data['link'] . '">' . $post_data['image'] . '</a></div>';
+    }
+    $html .= "<div class='post-content'>";
+    $html .= __heading(array(
+        'heading' => $post_data['title'],
+        'tag' => 'h3',
+        'class' => 'title mt-3',
+        'link' => $post_data['link'],
+        'link_type' => $post_box_settings['type'],
+    ));
+
+
+    $html .= "</div>";
+
+    $html .= "</div>";
+    $html .= "</div>";
+
+    return $html;
+}
+
+
+function _post_box_style_4($post_data, $post_box_settings, $html = "")
+{
+    $author_id = get_post_field('post_author', $post_data['id']);
+
+
+    $html .= "<div class='post-box-grid-holder'>";
+    if (isset($post_box_settings['show_post_type_label']) && $post_box_settings['show_post_type_label'] == true && isset($post_data['post_type'])) {
+        $post_type = $post_data['post_type'];
+        $html .= "<div class='text-label-style-1 mb-2'>$post_type</div>";
+    }
+    $html .= "<div class='post-box-style-4-grid position-relative image-zoom-on-hover'>";
+
+    if (is_int($post_data['image'])) {
+        $html .= __icon_image(array(
+            'id' => $post_data['image'],
+            'size' => 'medium',
+            'class' => 'image-style',
+            'link' => $post_data['link'],
+            'link_type' => $post_box_settings['type'],
+        ));
+    } else {
+        $html .= '<div class="image-box image-style"><a class="text-inherit text-decoration-none" href="' . $post_data['link'] . '">' . $post_data['image'] . '</a></div>';
+    }
+    $html .= "<div class='post-content position-absolute text-white'>";
+    $html .= "<div class='position-relative'>";
+    $html .= __heading(array(
+        'heading' => $post_data['title'],
+        'tag' => 'h3',
+        'class' => 'title mb-2 text-initial',
+        'link' => $post_data['link'],
+        'link_type' => $post_box_settings['type'],
+    ));
+
+    $html .= "[post_author author_id=$author_id]";
+
+    $html .= "</div>";
+    $html .= "</div>";
+    $html .= "</div>";
+    $html .= "</div>";
+
+    return $html;
+}
+
+
+function _story_player_box($post_data)
+{
+    $SVG = new SVG;
+
+    $author_id = get_post_field('post_author', $post_data['id']);
+    $author = get_the_author_meta('display_name', $author_id);
+    $username = '@' . get_the_author_meta('user_login', $author_id);
+    $link = get_the_permalink($post_data['id']);
+
+    $video = get__post_meta_by_id($post_data['id'], 'video');
+    $html = "<div class='post-box-grid-holder'>";
+    $html .= "<a href='$link' class='d-block video-player position-relative rounded overflow-hidden'>";
+    $html .= __video(array(
+        'id' => $video
+    ));
+    $html .= "<div class='play-button position-absolute'>" . $SVG->play() . "</div>";
+    $html .= "<div class='story-details text-white position-absolute'>";
+    $html .= __heading(array(
+        'heading' => $author,
+        'tag' => 'h3',
+        'class' => 'title mb-0 text-large',
+    ));
+    $html .= "<div class='desc'>$username</div>";
+
+    $html .= "</div>";
+
+    $html .= "</a>";
+    $html .= "</div>";
+
+    return $html;
+}
+
+function _video_player_box($post_data, $post_box_settings)
+{
+    $SVG = new SVG;
+
+    $link = get_the_permalink($post_data['id']);
+
+    if (isset($post_box_settings['show_year']) && $post_box_settings['show_year'] == true) {
+        $desc = $post_data['meta_data']['year'];
+    } else {
+        $desc = $post_data['desc'];
+    }
+
+    $video = get__post_meta_by_id($post_data['id'], 'video');
+    $html = "<div class='post-box-grid-holder'>";
+
+    $html .= "<a href='$link' class='d-block video-player position-relative rounded overflow-hidden'>";
+    $html .= "<div class='video-holder position-static'>";
+    $html .= __video(array(
+        'id' => $video
+    ));
+
+    $html .= "<div class='play-button position-absolute'>" . $SVG->play() . "</div>";
+    $html .= "</div>";
+
+    $html .= "<div class='story-details text-white position-absolute'>";
+    $html .= __heading(array(
+        'heading' => $post_data['title'],
+        'tag' => 'h3',
+        'class' => 'title mb-0 text-large text-white',
+    ));
+    $html .= "<div class='desc'>" . $desc . "</div>";
+
+    $html .= "</div>";
+
+    $html .= "</a>";
+    $html .= "</div>";
+
+    return $html;
+}
 function _post_grid($post, $post_type, $html = "<div class='post-grid'>")
 {
 

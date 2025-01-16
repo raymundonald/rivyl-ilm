@@ -3,7 +3,25 @@ jQuery(document).ready(function () {
     modals();
     header_menu();
     ajax_trigger();
+    story();
 });
+
+function story() {
+
+    jQuery('.video-player').each(function (index, element) {
+        var video = jQuery(this).find('video').get(0);
+        jQuery(this).hover(
+            function () {
+                video.play();
+
+            },
+            function () {
+                video.pause();
+            }
+        );
+
+    });
+}
 function modals() {
     jQuery('.listen-modal').click(function (e) {
         jQuery('#listenModal').modal('show');
@@ -55,9 +73,30 @@ function swiper_sliders() {
                 },
 
             });
-
         });
     }
+
+    if (jQuery('.swiper-post-slider-style-2').length > 0) {
+        jQuery('.swiper-post-slider-style-2').each(function (index, element) {
+            $id = jQuery(this).attr('id');
+            var swiper = new Swiper('#' + $id + ' .swiper-post-slider', {
+                spaceBetween: 20,
+                slidesPerView: 'auto',
+                pagination: {
+                    el: '#' + $id + ' .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '#' + $id + ' .swiper-button-next',
+                    prevEl: '#' + $id + ' .swiper-button-prev',
+                },
+
+            });
+        });
+    }
+
+
+
 
     setTimeout(function () {
 
@@ -91,6 +130,26 @@ function swiper_sliders() {
         });
 
     }, 100);
+
+    if (jQuery('.swiper-stories-single').length > 0) {
+        jQuery('.swiper-stories-single .swiper-wrapper').each(function (index, element) {
+            $height = jQuery(this).outerHeight();
+            jQuery(this).css('--height', $height + 'px');
+        });
+    }
+    setTimeout(function () {
+        var swiper_single_stories = new Swiper(".swiper-stories-single", {
+            direction: "vertical",
+            autoHeight: true,
+            spaceBetween: 30,
+            mousewheel: true, 
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    }, 100);
+
 }
 
 function post_ajax() {

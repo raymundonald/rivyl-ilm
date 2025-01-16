@@ -69,18 +69,18 @@ class UpdraftPlus_BackupModule_remotesend extends UpdraftPlus_RemoteStorage_Addo
 		$get_remote_size = $this->send_message('get_file_status', $file, 30);
 		
 		if (is_wp_error($get_remote_size)) {
-			throw new Exception($get_remote_size->get_error_message().' (get_file_status: '.$get_remote_size->get_error_code().')');
+			throw new Exception($get_remote_size->get_error_message().' (get_file_status: '.$get_remote_size->get_error_code().')'); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 		}
 
-		if (!is_array($get_remote_size) || empty($get_remote_size['response'])) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($get_remote_size));
+		if (!is_array($get_remote_size) || empty($get_remote_size['response'])) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($get_remote_size)); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 
 		if ('error' == $get_remote_size['response']) {
 			$msg = $get_remote_size['data'];
 			// Could interpret the codes to get more interesting messages directly to the user
-			throw new Exception(__('Error:', 'updraftplus').' '.$msg);
+			throw new Exception(__('Error:', 'updraftplus').' '.$msg); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 		}
 
-		if (empty($get_remote_size['data']) || !isset($get_remote_size['data']['size']) || 'file_status' != $get_remote_size['response']) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($get_remote_size));
+		if (empty($get_remote_size['data']) || !isset($get_remote_size['data']['size']) || 'file_status' != $get_remote_size['response']) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($get_remote_size)); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 
 		// Possible statuses: 0=temporary file (or not present), 1=file
 		if (empty($get_remote_size['data'])) {
@@ -239,10 +239,10 @@ class UpdraftPlus_BackupModule_remotesend extends UpdraftPlus_RemoteStorage_Addo
 		if (is_wp_error($put_chunk)) {
 			// The exception handler is within this class. So we can store the data.
 			$this->remotesend_chunked_wp_error = $put_chunk;
-			throw new Exception($put_chunk->get_error_message().' ('.$put_chunk->get_error_code().')');
+			throw new Exception($put_chunk->get_error_message().' ('.$put_chunk->get_error_code().')'); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 		}
 
-		if (!is_array($put_chunk) || empty($put_chunk['response'])) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($put_chunk));
+		if (!is_array($put_chunk) || empty($put_chunk['response'])) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($put_chunk)); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 
 		if ('error' == $put_chunk['response']) {
 			$msg = $put_chunk['data'];
@@ -255,10 +255,10 @@ class UpdraftPlus_BackupModule_remotesend extends UpdraftPlus_RemoteStorage_Addo
 					return new WP_Error('try_again', 'File on remote system is smaller than expected - perhaps an eventually-consistent filesystem (wait and retry)');
 				}
 			}
-			throw new Exception(__('Error:', 'updraftplus').' '.$msg);
+			throw new Exception(__('Error:', 'updraftplus').' '.$msg); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 		}
 
-		if ('file_status' != $put_chunk['response']) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($put_chunk));
+		if ('file_status' != $put_chunk['response']) throw new Exception(__('Unexpected response:', 'updraftplus').' '.serialize($put_chunk)); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error message to be escaped when caught and printed.
 
 		// Possible statuses: 0=temporary file (or not present), 1=file
 		if (empty($put_chunk['data']) || !is_array($put_chunk['data'])) {

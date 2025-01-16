@@ -101,19 +101,21 @@ require_once('includes/_required_files.php');
 
 function canonical()
 {
-	if (is_single() || is_page()) {
-		return get_the_permalink();
-	} else if (is_tax() || is_category()) {
-		$term_link = get_term_link(get_queried_object()->term_id);
-		return $term_link;
-	} else if (is_post_type_archive()) {
-		$archive_link = get_post_type_archive_link(get_post_type());
-		return $archive_link;
-	} else if (is_home()) {
-		$blog_url = get_permalink(get_option('page_for_posts'));
-		return $blog_url;
-	} else {
-		$term_link = get_term_link(get_queried_object()->term_id);
-		return $term_link;
+	if (!is_author()) {
+		if (is_single() || is_page()) {
+			return get_the_permalink();
+		} else if (is_tax() || is_category()) {
+			$term_link = get_term_link(get_queried_object()->term_id);
+			return $term_link;
+		} else if (is_post_type_archive()) {
+			$archive_link = get_post_type_archive_link(get_post_type());
+			return $archive_link;
+		} else if (is_home()) {
+			$blog_url = get_permalink(get_option('page_for_posts'));
+			return $blog_url;
+		} else {
+			$term_link = get_term_link(get_queried_object()->term_id);
+			return $term_link;
+		}
 	}
 }

@@ -25,8 +25,6 @@ section.hero {
         z-index: 1;
     }
     &.hero-content-over-image {
-        min-height: calc(100vh - 80px);
-
         .hero-content {
             color: var(--white);
         }
@@ -34,6 +32,13 @@ section.hero {
         .hero-desc {
             max-width: 817px;
         }
+        &:not(.hero-content-over-image-not-fh) {
+            min-height: calc(100vh - 80px);
+        }
+    }
+    &.hero-content-over-image-not-fh {
+        min-height: 55vh;
+        padding-bottom: 64px;
     }
     &.hero-content-below-image {
         .hero-inner {
@@ -101,7 +106,9 @@ section.hero {
 .admin-bar {
     section.hero {
         &.hero-content-over-image {
-            min-height: calc(100vh - 80px - 32px);
+            &:not(.hero-content-over-image-not-fh) {
+                min-height: calc(100vh - 80px - 32px);
+            }
         }
     }
 }

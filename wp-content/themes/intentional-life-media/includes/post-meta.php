@@ -8,12 +8,14 @@ use Carbon_Fields\Field;
 Container::make('post_meta', 'Hero Settings')
     ->where('post_template', '=', 'templates/page-modules.php')
     ->or_where('post_template', '=', 'templates/page-archives.php')
+    ->or_where('post_template', '=', 'templates/page-library-of-hope.php')
     ->or_where('post_id', '=', get_option('page_for_posts'))
     ->add_tab('Settings', array(
         Field::make('select', 'hero_style', __('Hero Style'))
             ->set_options(array(
                 'hero-content-below-image' => 'Content Below Image',
-                'hero-content-over-image' => 'Content Over Image',
+                'hero-content-over-image' => 'Content Over Image(Full height)',
+                'hero-content-over-image hero-content-over-image-not-fh' => 'Content Over Image(Not Full height)',
                 'hero-text-icon-only' => 'Text and Icon Only',
                 'no-hero' => 'No Hero',
             )),
@@ -309,7 +311,7 @@ function __grid_fields__()
         Field::make('text', 'grid_columns_desktop', __('Grid Columns Desktop'))->set_width(33)->set_default_value(3),
         Field::make('text', 'grid_columns_tablet', __('Grid Columns Tablet'))->set_width(33)->set_default_value(2),
         Field::make('text', 'grid_columns_mobile', __('Grid Columns Mobile'))->set_width(33)->set_default_value(1),
-        Field::make('select', 'grid_style', __('Grid Style'))->set_width(33)
+        Field::make('select', 'post_box_style', __('Grid Style'))->set_width(33)
             ->set_options(
                 array(
                     'style-1' => 'Style-1',
@@ -534,10 +536,271 @@ function __post_fields_()
                         ),
 
                 )
+            )
+            ->add_fields(
+                'albums',
+                array(
+                    Field::make('hidden', 'taxonomy', __('Source'))->set_default_value('albums_category'),
+                    Field::make('select', 'source', __('Source'))
+                        ->set_options(
+                            array(
+                                'most-recent'      => 'Most Recent',
+                                'manually' => 'Select Manually',
+                                'category' => 'Select by Category',
+                            )
+                        ),
+
+                    Field::make('association', 'post', 'Select Blog')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'post',
+                                    'post_type' => 'albums',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'manually',
+                                )
+                            )
+                        ),
+                    Field::make('association', 'terms', 'Select Category')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'term',
+                                    'taxonomy' => 'albums_category',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'category',
+                                )
+                            )
+                        ),
+
+                )
+            )
+            ->add_fields(
+                'videos',
+                array(
+                    Field::make('hidden', 'taxonomy', __('Source'))->set_default_value('videos_category'),
+                    Field::make('select', 'source', __('Source'))
+                        ->set_options(
+                            array(
+                                'most-recent'      => 'Most Recent',
+                                'manually' => 'Select Manually',
+                                'category' => 'Select by Category',
+                            )
+                        ),
+
+                    Field::make('association', 'post', 'Select Blog')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'post',
+                                    'post_type' => 'albums',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'manually',
+                                )
+                            )
+                        ),
+                    Field::make('association', 'terms', 'Select Category')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'term',
+                                    'taxonomy' => 'videos_category',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'category',
+                                )
+                            )
+                        ),
+
+                )
+            )
+            ->add_fields(
+                'playlists',
+                array(
+                    Field::make('hidden', 'taxonomy', __('Source'))->set_default_value('playlists_category'),
+                    Field::make('select', 'source', __('Source'))
+                        ->set_options(
+                            array(
+                                'most-recent'      => 'Most Recent',
+                                'manually' => 'Select Manually',
+                                'category' => 'Select by Category',
+                            )
+                        ),
+
+                    Field::make('association', 'post', 'Select Blog')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'post',
+                                    'post_type' => 'albums',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'manually',
+                                )
+                            )
+                        ),
+                    Field::make('association', 'terms', 'Select Category')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'term',
+                                    'taxonomy' => 'playlists_category',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'category',
+                                )
+                            )
+                        ),
+
+                )
+            )
+            ->add_fields(
+                'livestreams',
+                array(
+                    Field::make('hidden', 'taxonomy', __('Source'))->set_default_value('livestreams_category'),
+                    Field::make('select', 'source', __('Source'))
+                        ->set_options(
+                            array(
+                                'most-recent'      => 'Most Recent',
+                                'manually' => 'Select Manually',
+                                'category' => 'Select by Category',
+                            )
+                        ),
+
+                    Field::make('association', 'post', 'Select Blog')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'post',
+                                    'post_type' => 'albums',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'manually',
+                                )
+                            )
+                        ),
+                    Field::make('association', 'terms', 'Select Category')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'term',
+                                    'taxonomy' => 'livestreams_category',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'category',
+                                )
+                            )
+                        ),
+
+                )
+            )
+            ->add_fields(
+                'on-demand',
+                array(
+                    Field::make('hidden', 'taxonomy', __('Source'))->set_default_value('on-demand_category'),
+                    Field::make('select', 'source', __('Source'))
+                        ->set_options(
+                            array(
+                                'most-recent'      => 'Most Recent',
+                                'manually' => 'Select Manually',
+                                'category' => 'Select by Category',
+                            )
+                        ),
+
+                    Field::make('association', 'post', 'Select Blog')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'post',
+                                    'post_type' => 'albums',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'manually',
+                                )
+                            )
+                        ),
+                    Field::make('association', 'terms', 'Select Category')
+                        ->set_types(
+                            array(
+                                array(
+                                    'type'      => 'term',
+                                    'taxonomy' => 'on-demand_category',
+                                )
+                            )
+                        )
+                        ->set_conditional_logic(
+                            array(
+                                array(
+                                    'field' => 'source',
+                                    'value' => 'category',
+                                )
+                            )
+                        ),
+
+                )
             ),
 
-        Field::make('text', 'posts_per_page', __('Post Per Page'))->set_width(50)->set_default_value(10),
-        Field::make('checkbox', 'is_slider', __('Is Slider'))->set_width(50),
+
+        Field::make('text', 'posts_per_page', __('Posts Per Page'))->set_width(25)->set_default_value(10),
+        Field::make('text', 'posts_slider_heading', __('Post Slider Heading'))->set_width(25),
+        Field::make('checkbox', 'is_slider', __('Is Slider'))->set_width(25),
+        Field::make('checkbox', 'hide_pagination', __('Hide Pagination'))->set_width(25)
+            ->set_conditional_logic(
+                array(
+                    array(
+                        'field' => 'is_slider',
+                        'value' => true,
+                    )
+                )
+            ),
         Field::make('select', 'slide_view_type', __('Slide View Type'))->set_width(100)
             ->set_options(
                 array(
@@ -619,7 +882,7 @@ function __post_fields_()
                     )
                 )
             ),
-            Field::make('text', 'slides_width_wide', __('Slides Width Wide'))->set_width(20)
+        Field::make('text', 'slides_width_wide', __('Slides Width Wide'))->set_width(20)
             ->set_conditional_logic(
                 array(
                     array(
@@ -806,6 +1069,7 @@ Container::make('post_meta', 'Sections')
     ->where('post_template', '=', 'templates/page-modules.php')
     ->or_where('post_id', '=', get_option('page_for_posts'))
     ->or_where('post_type', '=', 'layouts')
+    ->or_where('post_template', '=', 'templates/page-library-of-hope.php')
     ->add_fields(array(
         Field::make('complex', 'sections', '')
             ->set_collapsed(true)
@@ -932,4 +1196,67 @@ Container::make('post_meta', 'Blog Settings')
     ->where('post_type', '=', 'post')
     ->add_fields(array(
         Field::make('text', 'read_time', __('Read Time(in minutes)'))->set_attribute('type', 'number')
+    ));
+
+/**Listen */
+Container::make('post_meta', 'Music Settings')
+    ->where('post_type', '=', 'music')
+    ->add_fields(array(
+        Field::make('file', 'audio', __('Audio'))->set_classes('inline-field')->set_type(array('audio')),
+    ));
+
+Container::make('post_meta', 'Album Settings')
+    ->where('post_type', '=', 'albums')
+    ->add_fields(array(
+        Field::make('association', 'music', 'Music')
+            ->set_types(
+                array(
+                    array(
+                        'type'      => 'post',
+                        'post_type' => 'music',
+                    )
+                )
+            )
+    ));
+
+Container::make('post_meta', 'Playlists Settings')
+    ->where('post_type', '=', 'playlists')
+    ->add_fields(array(
+        Field::make('association', 'music', 'Music')
+            ->set_types(
+                array(
+                    array(
+                        'type'      => 'post',
+                        'post_type' => 'music',
+                    )
+                )
+            )
+    ));
+
+
+Container::make('post_meta', 'Story Settings')
+    ->where('post_type', '=', 'stories')
+    ->add_fields(array(
+        Field::make('file', 'video', __('Video'))->set_classes('inline-field')->set_type(array('video'))
+    ));
+
+Container::make('post_meta', 'On-Demand Settings')
+    ->where('post_type', '=', 'on-demand')
+    ->add_fields(array(
+        Field::make('file', 'video', __('Video'))->set_classes('inline-field')->set_type(array('video'))
+    ));
+
+
+
+Container::make('post_meta', 'Video Settings')
+    ->where('post_type', '=', 'videos')
+    ->add_fields(array(
+        Field::make('file', 'video', __('Video'))->set_classes('inline-field')->set_type(array('video'))
+    ));
+
+Container::make('post_meta', 'Livestreams Settings')
+    ->where('post_type', '=', 'livestreams')
+    ->add_fields(array(
+        Field::make('file', 'video', __('Video'))->set_classes('inline-field')->set_type(array('video')),
+        Field::make('color', 'color', __('Color'))->set_classes('inline-field')
     ));
